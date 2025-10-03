@@ -4,6 +4,44 @@
     <head>
         <!--This is the name of the website browser tab-->
         <title>Digital Portfolio 8</title>
+            <style>
+                ul {
+                    margin-left: 20px;
+                }
+                img {
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                    border-radius: 20px;
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                    box-shadow: 5px 5px 10px rgba(255, 255, 255, 0.5);
+                }
+                #course-description {
+                    font-family: Arial, sans-serif;
+                    line-height: 1.6;
+                    color: #ffffff;
+                }
+                #assignment-list {
+                    font-family: Arial, sans-serif;
+                    line-height: 1.6;
+                    color: #ffffff;
+                }
+                #banner-title {
+                    font-family: 'Arial Black', sans-serif;
+                    font-size: 36px;
+                    color: #ffffff;
+                    text-align: center;
+                    margin-top: 20px;
+                }
+                #banner-title1 {
+                    font-family: 'Arial Black', sans-serif;
+                    font-size: 15px;
+                    color: #ffffff;
+                    text-align: center;
+                    margin-top: 20px;
+                }
+            </style>
     </head>
     <!--All website content goes here-->
     <body>
@@ -12,38 +50,40 @@
         <!--This is the subtitle-->
         <p>Digital Portfolio</p>
         <!--This creates a bulleted list-->
-        <ul>
-            <!--Links to each page of the website-->
-            <li>Homepage</li>
-            <li>E&D</li>
-            <li>Algebra</li>
-            <li>English</li>
-            <li>History</li>
-            <li>Drama</li>
-            <li>Science</li>
-            <li>Spanish</li>
-            <li>Contact</li>
-        </ul>
+            <ul>
+                <!--Links to each page of the website-->
+                <li>Homepage</li>
+                <li>E&D</li>
+                <li>Algebra</li>
+                <li>English</li>
+                <li>History</li>
+                <li>Drama</li>
+                <li>Science</li>
+                <li>Spanish</li>
+                <li>Contact</li>
+            </ul>
         <!--Page name below-->   
-        <h2>Math</h2>
-        <h4>Mr. Panicker</h4>
+        <h2 id="banner-title">Math</h2>
+        <h4 id="banner-title1">Mr. Panicker</h4>
         <!--Profile image goes here-->
-        <img height="250" src="https://unescoalfozanprize.org/wp-content/uploads/2023/01/1_L76A5gL6176UbMgn7q4Ybg.jpeg">
+        <div style="text-align:center;">
+            <img height="250" src="https://unescoalfozanprize.org/wp-content/uploads/2023/01/1_L76A5gL6176UbMgn7q4Ybg.jpeg">
+        </div>
 
         <h2>Course Description</h2>
         <!--Paragraph about my course description-->
-        <p>
+        <p id="course-description">
             In the 8th grade, students continue the study of algebra through a function-based curriculum, as they move from linear functions to absolute value, quadratic, and exponential functions. Technology, including the Texas Instruments Graphing calculator, Desmos, and Microsoft Excel, and real-world applications reinforce the increasingly complex concepts. Students are expected to make written analyses of increasing sophistication, along with occasional projects and presentations, as part of their regular work in and out of class.
         </p>
 
         <h2>Assignment List</h2>
         <!--List about my assignments-->
-        <ul>
-            <li>HW 9-9</li>
-            <li>HW 9-10</li>
-            <li>HW 9-11</li>
-            <li>Quizzes</li>
-            <li>Test 9-30</li>
-        </ul>
+            <ul id="assignment-list">
+                <li>HW 9-9</li>
+                <li>HW 9-10</li>
+                <li>HW 9-11</li>
+                <li>Quizzes</li>
+                <li>Test 9-30</li>
+            </ul>
     </body>
 </html>
