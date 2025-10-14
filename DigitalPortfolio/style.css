@@ -2,10 +2,12 @@ img {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    border-radius: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
-    border-radius: 20%;
+    border-radius: 30%;
+    border-style: outset;
+    border-width: 3px;
+    border-color: #13F0EC;
 }
 h1 {
     color: #ffffff;
@@ -14,6 +16,11 @@ h1 {
     font-family: 'Arial Black', sans-serif;
     margin-bottom: 0px;
     margin-top: 10px;
+    border-style: ridge;
+    border-color: #13F0EC;
+    border-radius: 10px;
+    padding: 10px;
+    padding-top: 6px !important;
 }
 p {
     text-align: center;
@@ -53,7 +60,19 @@ h4 {
     margin-top: 10px;
 }
 
+/* General Classes */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
 
+.buttons ul {
+    display: inline-block;
+}
 
 /* E&D Page Classes */
 .centeredtext {
@@ -124,3 +143,92 @@ h4 {
     width: 50% !important;
 }
 
+/* English Page Image */
+#englishimg {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    border-radius: 20px !important;
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+    border-radius: 20px !important;
+    height: 250px !important;
+    width: 500px !important;
+}
+
+/* Science Page Image */
+#scienceimg {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    border-radius: 20px !important;
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+    border-radius: 20px !important;
+    height: 300px !important;
+    width: 500px !important;
+}
+
+/* Home Page Image */
+#homeimg {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    border-radius: 20px !important;
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+    height: 300px !important;
+    width: 500px !important;
+}
+
+/* History Page Image */
+#historyimg {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    border-radius: 20px !important;
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+    border-radius: 20px !important;
+    height: 300px !important;
+    width: 500px !important;
+}
+
+/* Drama Page Image */
+#dramaimg {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    border-radius: 20px !important;
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+    border-radius: 20px !important;
+    height: 300px !important;
+    width: 500px !important;
+}
+
+/* Spanish Page Image */
+#spanishimg {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    border-radius: 20px !important;
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+    border-radius: 20px !important;
+    height: 300px !important;
+    width: 500px !important;
+}
+
+/* Contact Page Image */
+#contactimg {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    border-radius: 20px !important;
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+    border-radius: 20px !important;
+    height: 300px !important;
+    width: 500px !important;
+}
