@@ -266,7 +266,7 @@ h4 {
     top: 10px;
     left: 50%;
     transform: translateX(-50%);
-    color: white;
+    color: black;
     font-weight: bold;
     font-size: 14px;
 }
@@ -312,7 +312,7 @@ h4 {
     top: 6px;
     left: 50%;
     transform: translateX(-50%);
-    color: white;
+    color: black;
     font-weight: bold;
     font-size: 14px;
 }
