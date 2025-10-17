@@ -90,13 +90,13 @@ h4 {
     border-radius: 20px;
 }
 
-/* Index Page Classes */
-.digitalportfolio {
+/* Index Page IDs */
+#digitalportfolio {
     text-align: center;
     margin-top: 20px;
     margin-bottom: auto;
     margin-left: auto;
-    margin-right: -30px;
+    margin-right: auto;
     font-family: 'Arial', sans-serif;
     font-weight: bold;
     color:#ffffff;
