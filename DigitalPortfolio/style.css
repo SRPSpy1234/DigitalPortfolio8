@@ -1,3 +1,4 @@
+/* Global Styles */
 img {
     margin-right: auto;
     margin-top: 20px;
@@ -30,9 +31,13 @@ p {
     font-family: 'Arial', sans-serif;
 }
 body {
+    /* Removes space running around the website */
     font-size: 18px;
     background-color: rgb(2, 0, 0);
     color: #ffffff;
+    margin: 0px;
+    text-align: center;
+    list-style-position: inside;
 }
 li {
     font-family: 'Arial', sans-serif;
@@ -62,14 +67,25 @@ h4 {
 .buttons {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-    margin-bottom: 20px;
     text-align: center;
+    gap: 10px;
+    
 }
-
 .buttons ul {
-    display: inline-block;
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    background-color: rgb(2, 0, 0);
+    overflow: hidden;
+    list-style-type: none;
+    float: left;
+}
+.buttons a {
+    display: block;
+    text-align: center;
+    padding: 14px 16px 10px 10px;
+    text-decoration: none;
+    color: #ffffff;
 }
 
 /* E&D Page Classes */
@@ -338,16 +354,26 @@ h4 {
     justify-content: center;
     flex-direction: column;
     text-align: center;
+    padding: 20px 0;
+    border-bottom: 2px solid #13F0EC;
+    margin-bottom: 20px;
 }
 
 .logo {
-    width: 300px;
-    height: 150px;
-    border-radius: 15px;
-    border: 2px solid #13F0EC;
+    width: 320px;
+    height: 160px;
+    border-radius: 20px;
+    border: 3px solid #13F0EC;
     object-fit: cover;
-    margin-bottom: 10px;
+    margin: 0 auto 15px auto;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    box-shadow: 0 8px 25px rgba(19, 240, 236, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.logo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(19, 240, 236, 0.4);
 }
