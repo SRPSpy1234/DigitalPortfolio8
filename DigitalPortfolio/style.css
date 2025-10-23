@@ -1,66 +1,90 @@
+/* CSS Custom Properties (Variables) - DRY Principle */
+:root {
+    --primary-text-color: #ffffff;
+    --secondary-text-color: #000;
+    --background-color: rgb(2, 0, 0);
+    --accent-color: #13F0EC;
+    --primary-font: 'Arial', sans-serif;
+    --header-font: 'Arial Black', sans-serif;
+    --border-radius-small: 10px;
+    --border-radius-medium: 15px;
+    --border-radius-large: 20px;
+    --border-radius-round: 30%;
+    --standard-spacing: 20px;
+    --small-spacing: 10px;
+    --border-width: 3px;
+    --transition-smooth: all 0.3s ease;
+}
+
 /* Global Styles */
 img {
     margin-right: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border-radius: 30%;
+    margin-top: var(--standard-spacing);
+    margin-bottom: var(--standard-spacing);
+    border-radius: var(--border-radius-round);
     border-style: outset;
-    border-width: 3px;
-    border-color: #13F0EC;
+    border-width: var(--border-width);
+    border-color: var(--accent-color);
 }
+
 h1 {
-    color: #ffffff;
+    color: var(--primary-text-color);
     font-size: 40px;
     text-align: center;
-    font-family: 'Arial Black', sans-serif;
+    font-family: var(--header-font);
     margin-bottom: 0px;
-    margin-top: 10px;
+    margin-top: var(--small-spacing);
     border-style: ridge;
-    border-color: #13F0EC;
-    border-radius: 10px;
-    padding: 10px;
+    border-color: var(--accent-color);
+    border-radius: var(--border-radius-small);
+    padding: var(--small-spacing);
     padding-top: 6px !important;
 }
+
 p {
     text-align: center;
-    color: #ffffff;
-    background-color: rgb(2, 0, 0);
+    color: var(--primary-text-color);
+    background-color: var(--background-color);
     font-size: 20px;
     margin-top: 5px;
-    margin-bottom: 20px;
-    font-family: 'Arial', sans-serif;
+    margin-bottom: var(--standard-spacing);
+    font-family: var(--primary-font);
 }
+
 body {
     /* Removes space running around the website */
     font-size: 18px;
-    background-color: rgb(2, 0, 0);
-    color: #ffffff;
+    background-color: var(--background-color);
+    color: var(--primary-text-color);
     margin: 0px;
     text-align: center;
     list-style-position: inside;
 }
+
 li {
-    font-family: 'Arial', sans-serif;
+    font-family: var(--primary-font);
     font-size: 18px;
-    color: #ffffff;
-    margin-bottom: 10px;
+    color: var(--primary-text-color);
+    margin-bottom: var(--small-spacing);
     align-items: center;
 }
+
 h2 {
-    color: #ffffff;
+    color: var(--primary-text-color);
     font-size: 30px;
     text-align: center;
-    font-family: 'Arial Black', sans-serif;
-    margin-bottom: 10px;
-    margin-top: 10px;
+    font-family: var(--header-font);
+    margin-bottom: var(--small-spacing);
+    margin-top: var(--small-spacing);
 }
+
 h4 {
-    color: #ffffff;
+    color: var(--primary-text-color);
     font-size: 20px;
     text-align: center;
-    font-family: 'Arial', sans-serif;
-    margin-bottom: 10px;
-    margin-top: 10px;
+    font-family: var(--primary-font);
+    margin-bottom: var(--small-spacing);
+    margin-top: var(--small-spacing);
 }
 
 /* General Classes */
@@ -68,24 +92,56 @@ h4 {
     display: flex;
     justify-content: center;
     text-align: center;
-    gap: 10px;
-    
+    gap: 5px;
+    margin-top: 0;
+    padding-top: 0;
 }
+
 .buttons ul {
     margin: 0px;
     padding: 0px;
     list-style-type: none;
-    background-color: rgb(2, 0, 0);
+    background-color: var(--background-color);
     overflow: hidden;
-    list-style-type: none;
-    float: left;
+    display: flex;
+    flex-direction: row;
+    border-radius: var(--border-radius-medium);
+    box-shadow: 0 4px 15px rgba(19, 240, 236, 0.2);
 }
+
+.buttons li {
+    margin: 0;
+    padding: 0;
+}
+
 .buttons a {
     display: block;
     text-align: center;
-    padding: 14px 16px 10px 10px;
+    padding: 14px 16px;
     text-decoration: none;
-    color: #ffffff;
+    color: var(--primary-text-color);
+    white-space: nowrap;
+    border-right: 1px solid var(--accent-color);
+    transition: var(--transition-smooth);
+    border-radius: 0;
+}
+
+.buttons li:first-child a {
+    border-top-left-radius: var(--border-radius-medium);
+    border-bottom-left-radius: var(--border-radius-medium);
+}
+
+.buttons li:last-child a {
+    border-top-right-radius: var(--border-radius-medium);
+    border-bottom-right-radius: var(--border-radius-medium);
+    border-right: none;
+}
+
+.buttons a:hover {
+    background-color: var(--accent-color);
+    color: var(--secondary-text-color);
+    box-shadow: 0 8px 25px rgba(19, 240, 236, 0.4);
+    transform: translateY(-2px);
 }
 
 /* E&D Page Classes */
@@ -109,49 +165,51 @@ h4 {
 /* Index Page IDs */
 #digitalportfolio {
     text-align: center;
-    margin-top: 20px;
+    margin-top: var(--standard-spacing);
     margin-bottom: auto;
     margin-left: auto;
     margin-right: auto;
-    font-family: 'Arial', sans-serif;
+    font-family: var(--primary-font);
     font-weight: bold;
-    color:#ffffff;
+    color: var(--primary-text-color);
 }
 
 /* Math Page IDs */
 #course-description {
-    font-family: Arial, sans-serif;
+    font-family: var(--primary-font);
     line-height: 1.6;
-    color: #ffffff;
+    color: var(--primary-text-color);
 }
+
 #assignment-list {
-    font-family: Arial, sans-serif;
+    font-family: var(--primary-font);
     line-height: 1.6;
-    color: #ffffff;
+    color: var(--primary-text-color);
 }
+
 #banner-title {
-    font-family: 'Arial Black', sans-serif;
+    font-family: var(--header-font);
     font-size: 36px;
-    color: #ffffff;
+    color: var(--primary-text-color);
     text-align: center;
-    margin-top: 20px;
+    margin-top: var(--standard-spacing);
 }
+
 #banner-title1 {
-    font-family: 'Arial Black', sans-serif;
+    font-family: var(--header-font);
     font-size: 15px;
-    color: #ffffff;
+    color: var(--primary-text-color);
     text-align: center;
-    margin-top: 20px;
+    margin-top: var(--standard-spacing);
 }
 
 /* Math Page img extra style */
-
 #mathimg {
     display: block !important;
     margin-left: auto !important;
     margin-right: auto !important;
-    border-radius: 20px !important;
-    margin-top: 20px !important;
+    border-radius: var(--border-radius-large) !important;
+    margin-top: var(--standard-spacing) !important;
     margin-bottom: 20px !important;
     border-radius: 20px !important;
     width: 50% !important;
@@ -249,10 +307,8 @@ h4 {
 
 /* E&D CSS Box Model */
 #boxmodelborder {
-    
-    border: solid 2px #13F0EC;
-    border-radius: 15px;
-    
+    border: solid 2px var(--accent-color);
+    border-radius: var(--border-radius-medium);
 }
 
 .box-model {
@@ -265,9 +321,9 @@ h4 {
 }
 
 .margin {
-    background-color: #13F0EC;
+    background-color: var(--accent-color);
     padding: 40px 40px;
-    border: 3px solid #13F0EC;
+    border: var(--border-width) solid var(--accent-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -311,9 +367,9 @@ h4 {
 }
 
 .padding {
-    background-color: #13F0EC;
+    background-color: var(--accent-color);
     padding: 25px 30px;
-    border: 3px solid #13F0EC;
+    border: var(--border-width) solid var(--accent-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -354,21 +410,21 @@ h4 {
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    padding: 20px 0;
-    border-bottom: 2px solid #13F0EC;
-    margin-bottom: 20px;
+    padding: var(--standard-spacing) 0;
+    border-bottom: 2px solid var(--accent-color);
+    margin-bottom: var(--standard-spacing);
 }
 
 .logo {
     width: 320px;
     height: 160px;
-    border-radius: 20px;
-    border: 3px solid #13F0EC;
+    border-radius: var(--border-radius-large);
+    border: var(--border-width) solid var(--accent-color);
     object-fit: cover;
     margin: 0 auto 15px auto;
     display: block;
     box-shadow: 0 8px 25px rgba(19, 240, 236, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: var(--transition-smooth);
     padding: 15px;
     box-sizing: border-box;
 }
