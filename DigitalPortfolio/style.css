@@ -433,3 +433,16 @@ h4 {
     transform: translateY(-5px);
     box-shadow: 0 12px 35px rgba(19, 240, 236, 0.4);
 }
+
+/* Logo link styling to preserve hover effects */
+.banner a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.banner a:hover .logo {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(19, 240, 236, 0.4);
+}
+
+
