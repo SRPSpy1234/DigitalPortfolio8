@@ -174,11 +174,15 @@ h4 {
     color: var(--primary-text-color);
 }
 
-/* Math Page IDs */
-#course-description {
+/* Course Description Styling */
+#course-description,
+.course-description {
     font-family: var(--primary-font);
     line-height: 1.6;
     color: var(--primary-text-color);
+    width: 70%;
+    margin: 0 auto;
+    max-width: 800px;
 }
 
 #assignment-list {
@@ -446,3 +450,66 @@ h4 {
 }
 
 
+/* DMC Table Styling */
+.dmc {
+    font-size: 15px;
+    margin: var(--standard-spacing) auto;
+    display: flex;
+    justify-content: center;
+}
+
+.dmc table {
+    border-collapse: collapse;
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto;
+    border: var(--border-width) solid var(--accent-color);
+    border-radius: var(--border-radius-small);
+    overflow: hidden;
+    background-color: var(--background-color);
+    box-shadow: 0 4px 15px rgba(19, 240, 236, 0.2);
+}
+
+.dmc th,
+.dmc td {
+    padding: 12px 15px;
+    text-align: center;
+    border: 1px solid var(--accent-color);
+    font-family: var(--primary-font);
+}
+
+.header {
+    background-color: var(--accent-color);
+    color: var(--secondary-text-color);
+    text-align: center;
+    font-family: var(--header-font);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.odd-row {
+    background-color: rgba(0, 225, 255, 0.8);
+    color: var(--primary-text-color);
+    border: 1px solid var(--accent-color);
+}
+
+.even-row {
+    background-color: rgba(19, 240, 236, 0.1);
+    color: var(--primary-text-color);
+    border: 1px solid var(--accent-color);
+}
+
+.odd-row:hover,
+.even-row:hover {
+    background-color: var(--accent-color);
+    color: var(--secondary-text-color);
+    transition: var(--transition-smooth);
+    transform: scale(1.02);
+}
+
+/* Contact Page Styling */
+.contact-label {
+    font-weight: bold;
+    color: var(--accent-color);
+    font-family: var(--header-font);
+}
