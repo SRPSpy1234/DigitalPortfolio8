@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+    <!-- The head tag holds the metadata for our site -->
+    <head>
+        <!-- This is the name of the website browser tab -->
+        <title>Binary Encoder/Decoder - Digital Portfolio 8</title>
+        <!-- Links my HTML page to my CSS page -->
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <!-- All website content goes here -->
+    <body>
+        <!-- This is the banner title -->
+        <div class="banner">
+            <a href="index.html"><img src="https://raw.githubusercontent.com/SRPSpy1234/DigitalPortfolio8/main/logo.png" alt="SP Logo" class="logo"></a>
+            <h1>Spencer Paley-Sitko</h1>
+            <!-- This is the subtitle -->
+            <p id="digitalportfolio">Digital Portfolio</p>
+        </div>
+
+        <!-- This is a div for the buttons -->
+        <div class="buttons">
+            <!-- This creates a bulleted list -->
+            <ul>
+                <!-- Links to each page of the website -->
+                <li><a href="ed.html">E&D</a></li>
+                <li><a href="math.html">Algebra</a></li>
+                <li><a href="english.html">English</a></li>
+                <li><a href="history.html">History</a></li>
+                <li><a href="drama.html">Drama</a></li>
+                <li><a href="science.html">Science</a></li>
+                <li><a href="spanish.html">Spanish</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="body">
+            <!-- Page name below -->
+            <h2 id="banner-title">Binary Message Encoder/Decoder</h2>
+            <h4 id="banner-title1">Convert text to binary and back!</h4>
+
+            <!-- Binary Encoder/Decoder Container -->
+            <div class="binary-container">
+                <div class="binary-section">
+                    <h3>Text to Binary Encoder</h3>
+                    <textarea id="textInput" placeholder="Type your message here..." rows="4"></textarea>
+                    <div class="button-group">
+                        <button id="encodeBtn" class="binary-btn">Encode to Binary</button>
+                        <button id="copyEncodedBtn" class="copy-btn">Copy Binary</button>
+                    </div>
+                    <textarea id="binaryOutput" placeholder="Binary output will appear here..." rows="6" readonly></textarea>
+                </div>
+
+                <div class="binary-section">
+                    <h3>Binary to Text Decoder</h3>
+                    <textarea id="binaryInput" placeholder="Paste binary code here (spaces or no spaces)..." rows="6"></textarea>
+                    <div class="button-group">
+                        <button id="decodeBtn" class="binary-btn">Decode to Text</button>
+                        <button id="copyDecodedBtn" class="copy-btn">Copy Text</button>
+                    </div>
+                    <textarea id="textOutput" placeholder="Decoded text will appear here..." rows="4" readonly></textarea>
+                </div>
+
+                <div class="binary-info">
+                    <h4>How Binary Works:</h4>
+                    <p>Each letter is represented by 8 binary digits (bits). For example:</p>
+                    <ul>
+                        <li><strong>A</strong> = 01000001</li>
+                        <li><strong>B</strong> = 01000010</li>
+                        <li><strong>Hello</strong> = 0100100001100101011011000110110001101111</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- JavaScript for binary functionality -->
+        <script src="binary.js"></script>
+    </body>
+</html>

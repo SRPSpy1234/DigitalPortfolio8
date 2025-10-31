@@ -7,6 +7,8 @@
         <title>Digital Portfolio 8</title>
         <!-- Links my HTML page to my CSS page -->
         <link rel="stylesheet" type="text/css" href="style.css">
+        <!-- JavaScript for popup functionality -->
+        <script src="popup.js"></script>
     </head>
     <!-- All website content goes here -->
     <body>
@@ -70,38 +72,42 @@
                 <li>FOC/HTTP/HTML Quiz</li>
             </ul>
         </div>
-        <div class="dmc">
-            <h1>Data Measurement Chart</h2>
-            <table border="1">
-            <tr class="header">
-                <th>Data</th>
-                <th>Size</th>
-            </tr>
-            <tr class="odd-row">
-                <td>Bit</td>
-                <td>Single Binary Digit</td>
-            </tr>
-            <tr class="even-row">
-                <td>Byte(B)</td>
-                <td>8 bits</td>
-            </tr>
-            <tr class="odd-row">
-                <td>Kilobyte (KB)</td>
-                <td>1000 Bytes</td>
-               
-            </tr>
-            <tr class="even-row">
-                <td>Megabyte (MB)</td>
-                <td>1000 Kilobytes</td>
-            <tr class="odd-row">
-                <td>Gigabyte (GB)</td>
-                <td>1000 Megabytes</td>
-            </tr>
-            <tr class="odd-row">
-                <td>Terabyte (TB)</td>
-                <td>1000 Gigabytes</td>
-            </tr>
-            </table>
+        <div class="dmc-container">
+            <h1 class="dmc-title-hover" data-message="Click Title for binary message encoder">
+                <a href="binary.html" style="text-decoration: none; color: inherit;">Data Measurement Chart</a>
+            </h1>
+            <div class="dmc">
+                <table>
+                <tr class="header">
+                    <th>Data</th>
+                    <th>Size</th>
+                </tr>
+                <tr class="odd-row hover-row" data-comparison="A single bit is like one light switch - either ON (1) or OFF (0). Every digital thing starts here!" data-fact="The word 'bit' comes from 'binary digit' - coined by statistician John Tukey in 1946!">
+                    <td>Bit</td>
+                    <td>Single Binary Digit</td>
+                </tr>
+                <tr class="even-row hover-row" data-comparison="8 bits make a byte - that's enough to store one letter like 'A'! Your name probably takes 5-10 bytes." data-fact="A byte can represent 256 different values (0-255) - perfect for storing all keyboard characters!">
+                    <td>Byte(B)</td>
+                    <td>8 bits</td>
+                </tr>
+                <tr class="odd-row hover-row" data-comparison="1 KB could store about 2 paragraphs of text - like this entire popup message!" data-fact="The first computer hard drive (1956) was 5MB but weighed over 1,000 pounds!">
+                    <td>Kilobyte (KB)</td>
+                    <td>1000 Bytes</td>
+                </tr>
+                <tr class="even-row hover-row" data-comparison="1 MB is roughly one high-quality photo from your phone - or 500 pages of plain text!" data-fact="The first 1MB hard drive cost $40,000 in 1980 - that's $140,000 in today's money!">
+                    <td>Megabyte (MB)</td>
+                    <td>1000 Kilobytes</td>
+                </tr>
+                <tr class="odd-row hover-row" data-comparison="1 GB could store 250 songs, 1,000 photos, or 16 hours of music - basically your entire weekend playlist!" data-fact="Netflix streams about 1GB of data per hour for standard definition video!">
+                    <td>Gigabyte (GB)</td>
+                    <td>1000 Megabytes</td>
+                </tr>
+                <tr class="even-row hover-row" data-comparison="1 TB as dollar bills would create a stack 67 miles high - that's into the stratosphere!" data-fact="Google processes over 20 petabytes (20,000 TB) of data every single day!">
+                    <td>Terabyte (TB)</td>
+                    <td>1000 Gigabytes</td>
+                </tr>
+                </table>
+            </div>
         </div>
         <div id="boxmodelborder">
             <h2>CSS Box Model</h2>
