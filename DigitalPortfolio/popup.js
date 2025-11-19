@@ -1,4 +1,4 @@
-// DMC Table Popup Functionality
+//IDevelop("Helped me go through my popup.js and find some bugs")
 document.addEventListener('DOMContentLoaded', function() {
     // Create popup element
     const popup = document.createElement('div');

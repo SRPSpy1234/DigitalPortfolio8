@@ -1,4 +1,5 @@
-// Binary Encoder/Decoder Functionality
+//Copilot("Skeleton for a binary encoder/decoder web app using JavaScript")
+
 document.addEventListener('DOMContentLoaded', function() {
     // Get all the elements
     const textInput = document.getElementById('textInput');
