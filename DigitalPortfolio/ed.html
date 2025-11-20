@@ -1,4 +1,5 @@
 <!-- Info for the DMC table was found on google -->
+ <!-- Got the idea for hidden class from https://www.w3schools.com/howto/howto_js_toggle_hide_show.asp -->
 <!DOCTYPE HTML>
 <html>
     <!-- The head tag holds the metadata for our site -->
@@ -9,6 +10,24 @@
         <link rel="stylesheet" type="text/css" href="style.css">
         <!-- JavaScript for popup functionality -->
         <script src="popup.js"></script>
+        <!-- JavaScript for assignment dropdown -->
+        <script>
+            function showTrimesterAssignments() {
+                // Get the selected trimester value
+                let selectedTrimester = document.getElementById('trimester-select').value;
+                
+                // Hide all assignment lists first
+                let allLists = document.getElementsByClassName('assignment-list');
+                for (let i = 0; i < allLists.length; i++) {
+                    allLists[i].classList.add('hidden');
+                }
+                
+                // Show the selected trimester's assignments
+                if (selectedTrimester !== '') {
+                    document.getElementById(selectedTrimester).classList.remove('hidden');
+                }
+            }
+        </script>
     </head>
     <!-- All website content goes here -->
     <body>
@@ -43,14 +62,27 @@
             <!-- Profile image goes here -->
             <img id="mathimg" height="250" src="https://www.discoverengineering.org/wp-content/uploads/2023/12/mj_11226_4.jpg">
             <h2>Assignment List</h2>
-            <ul id="assignment-list">
+            
+            <!-- Dropdown menu for trimester selection -->
+            <div class="assignment-dropdown">
+                <label for="trimester-select">Select Trimester:</label>
+                <select id="trimester-select" onchange="showTrimesterAssignments()">
+                    <option value="">Choose a trimester...</option>
+                    <option value="trimester1">Trimester 1</option>
+                    <option value="trimester2">Trimester 2</option>
+                    <option value="trimester3">Trimester 3</option>
+                </select>
+            </div>
+
+            <!-- Trimester 1 Assignments -->
+            <ul id="trimester1" class="assignment-list hidden">
+                <li>Course Expectations Worksheet</li>
                 <li>Data measurement worksheet</li>
                 <li>Site Map</li>
                 <li>Add 3 CSS classes with 3 properties apiece to E&D.html</li>
                 <li>CodeHS</li>
                 <li>Box Model Slide</li>
                 <li>Update Class Assignments</li>
-                <li>Course Expectations Worksheet</li>
                 <li>Binary Counting Worksheet</li>
                 <li>Box Model on E&D Page</li>
                 <li>Data Measurement Worksheet</li>
@@ -71,7 +103,16 @@
                 <li>IP/DNS Quiz</li>
                 <li>FOC/HTTP/HTML Quiz</li>
                 <li>CodeHS Special Selectors</li>
+            </ul>
 
+            <!-- Trimester 2 Assignments -->
+            <ul id="trimester2" class="assignment-list hidden">
+                <li>Future assignments will appear here...</li>
+            </ul>
+
+            <!-- Trimester 3 Assignments -->
+            <ul id="trimester3" class="assignment-list hidden">
+                <li>Future assignments will appear here...</li>
             </ul>
         </div>
         <div class="dmc-container">

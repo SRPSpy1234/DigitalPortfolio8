@@ -7,6 +7,8 @@
         <title>Digital Portfolio 8</title>
         <!-- Links my HTML page to my CSS page -->
         <link rel="stylesheet" type="text/css" href="style.css">
+        <!-- Links my JavaScript file for physics calculator -->
+        <script src="../assets/myIdea.js"></script>
     </head>
     <!-- All website content goes here -->
     <body>
@@ -65,6 +67,35 @@
                 <li>Submit Lab Report on Parachute Lab</li>
                 <li>Check HW Grade</li>
             </ul>
+
+            <!-- Physics Motion Calculator Section -->
+            <div class="physics-calculator">
+                <h2>Physics Motion Calculator</h2>
+                <p>Calculate how fast and how far an object moves using kinematics equations!</p>
+                
+                <div class="calculator-inputs">
+                    <div class="input-group">
+                        <label for="initialVelocity">Initial Velocity (m/s):</label>
+                        <input type="number" id="initialVelocity" placeholder="Enter starting speed" step="0.1">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="distance">Distance (meters):</label>
+                        <input type="number" id="distance" placeholder="Enter distance traveled" step="0.1">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="time">Time (seconds):</label>
+                        <input type="number" id="time" placeholder="Enter time duration" step="0.1">
+                    </div>
+                    
+                    <button onclick="calculateMotion()" class="physics-button">Calculate Motion</button>
+                </div>
+                
+                <div class="calculator-results">
+                    <p id="results-display">Results will appear here after calculation...</p>
+                </div>
+            </div>
         </div>
     </body>
 </html>
