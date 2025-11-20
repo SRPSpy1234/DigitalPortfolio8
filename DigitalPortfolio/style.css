@@ -932,3 +932,158 @@ h4 {
 .hidden {
     display: none;
 }
+
+/* Graph Container Styling */
+.graph-container {
+    margin: 30px 0;
+    padding: 20px;
+    background-color: rgba(19, 240, 236, 0.05);
+    border: 2px solid var(--accent-color);
+    border-radius: var(--border-radius-medium);
+}
+
+.graph-container h3 {
+    color: var(--accent-color);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.graph-section {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: var(--border-radius-small);
+}
+
+.graph-section h4 {
+    color: var(--primary-text-color);
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.graph-section canvas {
+    max-width: 100%;
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+/* Interactive Graph Mode Styling */
+.graph-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.mode-toggle {
+    display: flex;
+    gap: 10px;
+}
+
+.mode-btn {
+    padding: 8px 16px;
+    border: 2px solid var(--accent-color);
+    background: transparent;
+    color: var(--primary-text-color);
+    border-radius: var(--border-radius-small);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.mode-btn.active {
+    background: var(--accent-color);
+    color: var(--secondary-text-color);
+}
+
+.mode-btn:hover {
+    background: rgba(19, 240, 236, 0.2);
+}
+
+.interactive-controls {
+    background: rgba(19, 240, 236, 0.05);
+    border: 1px solid var(--accent-color);
+    border-radius: var(--border-radius-medium);
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.interactive-controls h4 {
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.control-row {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.control-group label {
+    color: var(--primary-text-color);
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.control-group input, .control-group select {
+    padding: 5px 8px;
+    background: var(--background-color);
+    color: var(--primary-text-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+    width: 60px;
+}
+
+.control-group span {
+    color: var(--primary-text-color);
+    font-size: 14px;
+}
+
+.interactive-btn, .analyze-btn, .reset-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: var(--border-radius-small);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.interactive-btn {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+}
+
+.interactive-btn:hover {
+    background: linear-gradient(135deg, #45a049, #4CAF50);
+    transform: translateY(-1px);
+}
+
+.analyze-btn {
+    background: linear-gradient(135deg, #2196F3, #1976D2);
+    color: white;
+}
+
+.analyze-btn:hover {
+    background: linear-gradient(135deg, #1976D2, #2196F3);
+    transform: translateY(-1px);
+}
+
+.reset-btn {
+    background: linear-gradient(135deg, #ff6b6b, #e55353);
+    color: white;
+}
+
+.reset-btn:hover {
+    background: linear-gradient(135deg, #e55353, #ff6b6b);
+    transform: translateY(-1px);
+}

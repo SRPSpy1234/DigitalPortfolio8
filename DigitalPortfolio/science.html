@@ -9,6 +9,8 @@
         <link rel="stylesheet" type="text/css" href="style.css">
         <!-- Links my JavaScript file for physics calculator -->
         <script src="../assets/myIdea.js"></script>
+        <!-- Chart.js library for creating graphs -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
     <!-- All website content goes here -->
     <body>
@@ -73,6 +75,7 @@
                 <h2>Physics Motion Calculator</h2>
                 <p>Calculate how fast and how far an object moves using kinematics equations!</p>
                 
+                <!-- Manual Input Section -->
                 <div class="calculator-inputs">
                     <div class="input-group">
                         <label for="initialVelocity">Initial Velocity (m/s):</label>
@@ -94,6 +97,73 @@
                 
                 <div class="calculator-results">
                     <p id="results-display">Results will appear here after calculation...</p>
+                </div>
+                
+                <!-- Graph containers -->
+                <div class="graph-container" id="graph-container" style="display: none;">
+                    <div class="graph-controls">
+                        <h3>Motion Graphs</h3>
+                        <div class="mode-toggle">
+                            <button id="calculation-mode" class="mode-btn active" onclick="switchToCalculationMode()">Calculation Mode</button>
+                            <button id="interactive-mode" class="mode-btn" onclick="switchToInteractiveMode()">Interactive Mode</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Interactive Controls (hidden by default) -->
+                    <div class="interactive-controls" id="interactive-controls" style="display: none;">
+                        <h4>Graph Settings</h4>
+                        <div class="control-row">
+                            <div class="control-group">
+                                <label>Time Range (seconds):</label>
+                                <input type="number" id="min-time" value="0" step="1" min="0" max="30">
+                                <span>to</span>
+                                <input type="number" id="max-time" value="10" step="1" min="1" max="50">
+                            </div>
+                            <div class="control-group">
+                                <label>Position Range (meters):</label>
+                                <input type="number" id="min-position" value="0" step="5" min="-100" max="100">
+                                <span>to</span>
+                                <input type="number" id="max-position" value="50" step="5" min="-100" max="200">
+                            </div>
+                        </div>
+                        <div class="control-row">
+                            <div class="control-group">
+                                <label>Number of Points:</label>
+                                <input type="number" id="point-count" value="5" step="1" min="3" max="20">
+                            </div>
+                        </div>
+                        <div class="control-row">
+                            <button onclick="createInteractiveGraph()" class="interactive-btn">Create Interactive Graph</button>
+                            <button onclick="presentCleanGraph()" class="present-btn" style="background: linear-gradient(45deg, #28a745, #20c997); color: white;">Present Clean View</button>
+                        </div>
+                        <div class="control-row">
+                            <button onclick="analyzeGraph()" class="analyze-btn">Analyze Graph</button>
+                            <button onclick="resetGraph()" class="reset-btn">Reset</button>
+                        </div>
+                        <div class="control-row">
+                            <p style="color: #ffffff; font-size: 0.9em; margin: 10px 0; font-style: italic;">
+                                Tip: Hold <strong>Shift</strong> while dragging for faster movement (2.5x speed)
+                            </p>
+                            <p style="color: #ffffff; font-size: 0.9em; margin: 5px 0; font-style: italic;">
+                                Tip: <strong>Double-click</strong> any point to type in a specific value
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="graph-section">
+                        <h4>Position vs Time</h4>
+                        <canvas id="positionChart" width="400" height="200"></canvas>
+                    </div>
+                    
+                    <div class="graph-section">
+                        <h4>Velocity vs Time</h4>
+                        <canvas id="velocityChart" width="400" height="200"></canvas>
+                    </div>
+                    
+                    <div class="graph-section">
+                        <h4>Acceleration vs Time</h4>
+                        <canvas id="accelerationChart" width="400" height="200"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
