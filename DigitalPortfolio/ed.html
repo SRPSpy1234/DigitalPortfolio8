@@ -66,12 +66,31 @@
             
             <!-- Dropdown menu for trimester selection -->
             <div class="assignment-dropdown">
-                <label for="trimester-select">Select Trimester:</label>
+                <label for="trimester-select">Assignments:</label>
                 <select id="trimester-select" onchange="showTrimesterAssignments()">
                     <option value="">Choose a trimester...</option>
                     <option value="trimester1">Trimester 1</option>
                     <option value="trimester2">Trimester 2</option>
                     <option value="trimester3">Trimester 3</option>
+                </select>
+            </div>
+
+            <!-- Dropdown menu for projects -->
+            <div class="assignment-dropdown">
+                <label for="project-select">Projects:</label>
+                <select id="project-select" onchange="goToProject()">
+                    <option value="">Choose a project...</option>
+                    <option value="p1">Project 1</option>
+                    <option value="p2">Project 2</option>
+                    <option value="p3">Project 3</option>
+                    <option value="p4">Project 4</option>
+                    <option value="p5">Project 5</option>
+                    <option value="p6">Project 6</option>
+                    <option value="p7">Project 7</option>
+                    <option value="p8">Project 8</option>
+                    <option value="p9">Project 9</option>
+                    <option value="p10">Project 10</option>
+                    <option value="car_project">Car Project</option>
                 </select>
             </div>
 
@@ -175,5 +194,18 @@
             <h2>DOM TREE Model</h2>
             <img src="images/node.png" alt="Node.js" class="node-image">
         </div>
+        
+        <script>
+            // Function to navigate to selected project page
+            function goToProject() {
+                const projectSelect = document.getElementById('project-select');
+                const selectedProject = projectSelect.value;
+                
+                if (selectedProject) {
+                    // Navigate to the selected project page
+                    window.location.href = `../projects/${selectedProject}.html`;
+                }
+            }
+        </script>
     </body>
 </html>
