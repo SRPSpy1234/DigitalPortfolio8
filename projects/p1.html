@@ -79,6 +79,27 @@ void loop() {
                 </p>
             </div>
             
+            <div class="project-section">
+                <h2>Project1_2: LED</h2>
+                <!-- Image with site-consistent styling -->
+                <img src="../images/p1_2led.png" alt="LED Matrix Project Image" id="project-image">
+                
+                <!-- Code dropdown -->
+                <div class="code-dropdown">
+                    <button class="code-toggle" onclick="toggleCode2()">View Code</button>
+                    <div class="code-content" id="codeContent2" style="display: none;">
+                        <pre><code>No Code for this project
+
+</code></pre>
+                    </div>
+                </div>
+                
+                <!-- Description paragraph -->
+                <p class="project-description">
+                    For the second part of Project 1, I experimented with the Arduino R4 Wifi and added a simple LED circuit. It contained a 220-ohm resistor connected to the cathode of the LED and the anode was linked directly to the 5V power pin. When powered on, the LED lit up green. If I had done this without a resistor the LED would have drawn too much current and burned out. This project helped me experiment with resistors in circuits to limit current flow and protect components.
+                </p>
+            </div>
+            
             <script>
             function toggleCode() {
                 const codeContent = document.getElementById('codeContent');
@@ -90,6 +111,19 @@ void loop() {
                 } else {
                     codeContent.style.display = 'none';
                     toggleBtn.innerHTML = 'View Code';
+                }
+            }
+            
+            function toggleCode2() {
+                const codeContent2 = document.getElementById('codeContent2');
+                const toggleBtn2 = document.querySelectorAll('.code-toggle')[1];
+                
+                if (codeContent2.style.display === 'none') {
+                    codeContent2.style.display = 'block';
+                    toggleBtn2.innerHTML = 'Hide Code';
+                } else {
+                    codeContent2.style.display = 'none';
+                    toggleBtn2.innerHTML = 'View Code';
                 }
             }
             </script>
