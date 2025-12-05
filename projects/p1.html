@@ -28,7 +28,71 @@
         </div>
         
         <div class="body">
-            <h1>Filler text for Project 1</h1>
+            <h1>Project 1</h1>
+            
+            <div class="project-section">
+                <h2>Project1_1: Blink</h2>
+                <!-- Image with site-consistent styling -->
+                <img src="../p1_1blink.png" alt="Blink Project Image" id="project-image">
+                
+                <!-- Code dropdown -->
+                <div class="code-dropdown">
+                    <button class="code-toggle" onclick="toggleCode()">View Code</button>
+                    <div class="code-content" id="codeContent" style="display: none;">
+                        <pre><code>#include "Arduino_LED_Matrix.h"
+
+ArduinoLEDMatrix matrix;
+
+// Frame with all LEDs on (12x8 matrix)
+const uint32_t allOn[] = {
+  0xffffffff,
+  0xffffffff,
+  0xffffffff
+};
+
+// the setup function runs once when you power the board
+void setup() {
+  // starts the LED matrix
+  matrix.begin();
+}
+
+void loop() {
+  // turn on all LEDs in the matrix (HIGH)
+  matrix.loadFrame(allOn);
+  
+  // wait for 500ms
+  delay(500);
+  
+  // turn the LEDs off by clearing the matrix (LOW)
+  matrix.clear();
+  
+  // wait for 500ms
+  delay(500);
+}
+</code></pre>
+                    </div>
+                </div>
+                
+                <!-- Description paragraph -->
+                <p class="project-description">
+                    For the first project with Arduino, we created a simple block of code that would make the pin 13 LED blink on and off at half second intervals. This project helped us get used to the Arduino IDE and basic programming concepts such as setting pin modes and using delays. We also learned about the structure of an Arduino sketch, including the void setup() and void loop() functions. I also experimented with changing the blink rate and used my Arduino R4 Wifi to test the 12x8 LED matrix display.
+                </p>
+            </div>
+            
+            <script>
+            function toggleCode() {
+                const codeContent = document.getElementById('codeContent');
+                const toggleBtn = document.querySelector('.code-toggle');
+                
+                if (codeContent.style.display === 'none') {
+                    codeContent.style.display = 'block';
+                    toggleBtn.innerHTML = 'Hide Code';
+                } else {
+                    codeContent.style.display = 'none';
+                    toggleBtn.innerHTML = 'View Code';
+                }
+            }
+            </script>
         </div>
     </body>
 </html>
