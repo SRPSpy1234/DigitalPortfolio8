@@ -104,6 +104,54 @@ void loop() {
                 </p>
             </div>
             
+            <div class="project-section">
+                <h2>Project1_3: Button</h2>
+                <h4>12/11/25</h4>
+                <!-- Image with site-consistent styling -->
+                <img src="../images/p1_3button.png" alt="Button Project Image" id="project-image">
+                
+                <!-- Code dropdown -->
+                <div class="code-dropdown">
+                    <button class="code-toggle" onclick="toggleCode3()">View Code</button>
+                    <div class="code-content" id="codeContent3" style="display: none;">
+                        <pre><code>// Project 1_3: Button
+// This program reads button input and controls an LED
+
+const int buttonPin = 2;     // the number of the pushbutton pin
+const int ledPin = 13;       // the number of the LED pin
+
+int buttonState = 0;         // variable for reading the pushbutton status
+
+void setup() {
+    // initialize the LED pin as an output:
+    pinMode(ledPin, OUTPUT);
+    // initialize the pushbutton pin as an input:
+    pinMode(buttonPin, INPUT);
+}
+
+void loop() {
+    // read the state of the pushbutton value:
+    buttonState = digitalRead(buttonPin);
+    
+    // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
+    if (buttonState == HIGH) {
+        // turn LED on:
+        digitalWrite(ledPin, HIGH);
+    } else {
+        // turn LED off:
+        digitalWrite(ledPin, LOW);
+    }
+}</code></pre>
+                    </div>
+                </div>
+                
+                <!-- Description paragraph -->
+                <h3>Project Description</h3>
+                <p class="project-description">
+                    For the third part of Project 1, I learned how to read digital input from a pushbutton and use it to control an LED. This project introduced me to input/output concepts, digital reading, and conditional statements in Arduino programming. I learned about pull-up resistors, button debouncing concepts, and how to use if/else statements to create interactive behavior based on user input.
+                </p>
+            </div>
+            
             <script>
             function toggleCode() {
                 const codeContent = document.getElementById('codeContent');
@@ -128,6 +176,19 @@ void loop() {
                 } else {
                     codeContent2.style.display = 'none';
                     toggleBtn2.innerHTML = 'View Code';
+                }
+            }
+            
+            function toggleCode3() {
+                const codeContent3 = document.getElementById('codeContent3');
+                const toggleBtn3 = document.querySelectorAll('.code-toggle')[2];
+                
+                if (codeContent3.style.display === 'none') {
+                    codeContent3.style.display = 'block';
+                    toggleBtn3.innerHTML = 'Hide Code';
+                } else {
+                    codeContent3.style.display = 'none';
+                    toggleBtn3.innerHTML = 'View Code';
                 }
             }
             </script>
