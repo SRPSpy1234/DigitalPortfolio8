@@ -114,41 +114,37 @@ void loop() {
                 <div class="code-dropdown">
                     <button class="code-toggle" onclick="toggleCode3()">View Code</button>
                     <div class="code-content" id="codeContent3" style="display: none;">
-                        <pre><code>// Project 1_3: Button
-// This program reads button input and controls an LED
-
-const int buttonPin = 2;     // the number of the pushbutton pin
-const int ledPin = 13;       // the number of the LED pin
-
-int buttonState = 0;         // variable for reading the pushbutton status
-
-void setup() {
-    // initialize the LED pin as an output:
-    pinMode(ledPin, OUTPUT);
-    // initialize the pushbutton pin as an input:
-    pinMode(buttonPin, INPUT);
-}
-
-void loop() {
-    // read the state of the pushbutton value:
-    buttonState = digitalRead(buttonPin);
-    
-    // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
-    if (buttonState == HIGH) {
-        // turn LED on:
-        digitalWrite(ledPin, HIGH);
-    } else {
-        // turn LED off:
-        digitalWrite(ledPin, LOW);
-    }
-}</code></pre>
+                        <pre><code>No Code for this project
+</code></pre>
                     </div>
                 </div>
                 
                 <!-- Description paragraph -->
                 <h3>Project Description</h3>
                 <p class="project-description">
-                    For the third part of Project 1, I learned how to read digital input from a pushbutton and use it to control an LED. This project introduced me to input/output concepts, digital reading, and conditional statements in Arduino programming. I learned about pull-up resistors, button debouncing concepts, and how to use if/else statements to create interactive behavior based on user input.
+                    For the third part of Project 1, I used a button to control an LED. The button was connected to the positive rail with a jumper wire, and the other side was connected to the positive leg of the LED. I had a 220-ohm resistor connected to the positive rail between the jumper cable and the button. The negative leg of the LED was connected to the ground rail with another jumper wire. When the button gets pressed, the circuit closes and the LED lights up. After, I also added a blink feature to the LED.
+                </p>
+            </div>
+            
+            <div class="project-section">
+                <h2>Project1_4: Series</h2>
+                <h4>12/12/25</h4>
+                <!-- Image with site-consistent styling -->
+                <img src="../images/p1_4series.png" alt="Series Project Image" id="project-image">
+                
+                <!-- Code dropdown -->
+                <div class="code-dropdown">
+                    <button class="code-toggle" onclick="toggleCode4()">View Code</button>
+                    <div class="code-content" id="codeContent4" style="display: none;">
+                        <pre><code>No Code for this project
+</code></pre>
+                    </div>
+                </div>
+                
+                <!-- Description paragraph -->
+                <h3>Project Description</h3>
+                <p class="project-description">
+                    For the fourth part of Project 1, I took my circuit from Project1_3 and added a second button between the LED and the first button. Now, to complete the circuit and light up the LED, you need to press both buttons simultaneously. This allows the current to flow through both buttons and power the LED. I kept the 220-ohm resistor in the series so the LED wouldn't burn out. I did encounter one issue with this setup, where one of my buttons shorted and caused the LED to not be able to light up. After replacing the button and LED the circuit worked fine
                 </p>
             </div>
             
@@ -189,6 +185,19 @@ void loop() {
                 } else {
                     codeContent3.style.display = 'none';
                     toggleBtn3.innerHTML = 'View Code';
+                }
+            }
+            
+            function toggleCode4() {
+                const codeContent4 = document.getElementById('codeContent4');
+                const toggleBtn4 = document.querySelectorAll('.code-toggle')[3];
+                
+                if (codeContent4.style.display === 'none') {
+                    codeContent4.style.display = 'block';
+                    toggleBtn4.innerHTML = 'Hide Code';
+                } else {
+                    codeContent4.style.display = 'none';
+                    toggleBtn4.innerHTML = 'View Code';
                 }
             }
             </script>
