@@ -148,6 +148,28 @@ void loop() {
                 </p>
             </div>
             
+            <div class="project-section">
+                <h2>Project1_Final</h2>
+                <h4>1/14/26</h4>
+                <!-- Image with site-consistent styling -->
+                <img src="" alt="Project Final Image" id="project-image">
+                
+                <!-- Code dropdown -->
+                <div class="code-dropdown">
+                    <button class="code-toggle" onclick="toggleCodeFinal()">View Code</button>
+                    <div class="code-content" id="codeContentFinal" style="display: none;">
+                        <pre><code>filler
+</code></pre>
+                    </div>
+                </div>
+                
+                <!-- Description paragraph -->
+                <h3>Project Description</h3>
+                <p class="project-description">
+                    filler
+                </p>
+            </div>
+            
             <script>
             function toggleCode() {
                 const codeContent = document.getElementById('codeContent');
@@ -198,6 +220,19 @@ void loop() {
                 } else {
                     codeContent4.style.display = 'none';
                     toggleBtn4.innerHTML = 'View Code';
+                }
+            }
+            
+            function toggleCodeFinal() {
+                const codeContentFinal = document.getElementById('codeContentFinal');
+                const toggleBtnFinal = document.querySelectorAll('.code-toggle')[4];
+                
+                if (codeContentFinal.style.display === 'none') {
+                    codeContentFinal.style.display = 'block';
+                    toggleBtnFinal.innerHTML = 'Hide Code';
+                } else {
+                    codeContentFinal.style.display = 'none';
+                    toggleBtnFinal.innerHTML = 'View Code';
                 }
             }
             </script>
