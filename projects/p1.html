@@ -150,15 +150,59 @@ void loop() {
             
             <div class="project-section">
                 <h2>Project1_Final</h2>
-                <h4>1/14/26</h4>
-                <!-- Image with site-consistent styling -->
-                <img src="" alt="Project Final Image" id="project-image">
+                <h4>1/22/26</h4>
+                <!-- Images with site-consistent styling -->
+                <div style="text-align: center; margin: 20px 0;">
+                    <div style="display: inline-block; margin: 10px;">
+                        <h4>Closed Box</h4>
+                        <img src="../images/p1_final_closed.png" alt="Project Final - Closed Box" id="project-image" style="max-width: 400px;">
+                    </div>
+                    <div style="display: inline-block; margin: 10px;">
+                        <h4>Open Box</h4>
+                        <img src="../images/p1_final_open.png" alt="Project Final - Open Box" id="project-image" style="max-width: 400px;">
+                    </div>
+                </div>
                 
                 <!-- Code dropdown -->
                 <div class="code-dropdown">
                     <button class="code-toggle" onclick="toggleCodeFinal()">View Code</button>
                     <div class="code-content" id="codeContentFinal" style="display: none;">
-                        <pre><code>filler
+                        <pre><code>
+// Define LED pins
+const int RED_LED = 13;
+const int YELLOW_LED = 12;
+const int GREEN_LED = 11;
+
+void setup() {
+  pinMode(RED_LED, OUTPUT);
+  pinMode(YELLOW_LED, OUTPUT);
+  pinMode(GREEN_LED, OUTPUT);
+
+  // Start with all LEDs BUT GREEN ON
+  digitalWrite(RED_LED, LOW);
+  digitalWrite(YELLOW_LED, LOW);
+  digitalWrite(GREEN_LED, HIGH);
+}
+
+void loop() {
+  // GREEN ON (others OFF)
+  digitalWrite(GREEN_LED, HIGH);
+  digitalWrite(YELLOW_LED, LOW);
+  digitalWrite(RED_LED, LOW);
+  delay(9000);
+
+  // YELLOW ON (others OFF)
+  digitalWrite(GREEN_LED, LOW);
+  digitalWrite(YELLOW_LED, HIGH);
+  digitalWrite(RED_LED, LOW);
+  delay(9000);
+
+  // RED ON (others OFF)
+  digitalWrite(GREEN_LED, LOW);
+  digitalWrite(YELLOW_LED, LOW);
+  digitalWrite(RED_LED, HIGH);
+  delay(9000);
+}
 </code></pre>
                     </div>
                 </div>
@@ -166,7 +210,7 @@ void loop() {
                 <!-- Description paragraph -->
                 <h3>Project Description</h3>
                 <p class="project-description">
-                    filler
+                    For the final part of Project 1, we took all of our previous knowledge of arduinos, soldering and power tool and combined them to create a final project that encompassed everything we learned. The goal of the project was to create a Trafic Light. The traffic light would have red, yellow and green LEDs that would alternate every 9 seconds. The box to hold the components was built using 5.5" x 1" pieces of wood that were cut then screwed together. The front panel of the box was attached using velcro so it could be easily removed to access the circuit inside. We faced a few chanllenges during the project, such as accidently making our housing to deep. This entire project helped us complete our first full Arduino circuit, code and housing.
                 </p>
             </div>
             
