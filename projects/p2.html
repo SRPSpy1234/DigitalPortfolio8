@@ -29,6 +29,83 @@
         
         <div class="body">
             <h1>Project 2</h1>
+            
+            <div class="project-section">
+                <h2>Project2_1: DC Motor</h2>
+                <h4>2/6/26</h4>
+                <!-- Image with site-consistent styling -->
+                <img src="../images/p2_1dcmotor.png" alt="Project 2_1 Image" id="project-image">
+                
+                <!-- Code dropdown -->
+                <div class="code-dropdown">
+                    <button class="code-toggle" onclick="toggleCode()">View Code</button>
+                    <div class="code-content" id="codeContent" style="display: none;">
+                        <pre><code>//integer variable storing switch/button state initially set to 0/off
+int switchState = 0;
+
+//constant variable assigning button/switch to input pin #
+const int buttonPin = 2;
+
+//constant variable assigning motor to output pin #
+const int motorPin = 9;
+
+//setup function
+void setup(){
+
+//function that will set pin for button as INPUT
+pinMode(buttonPin, INPUT); 
+//function that will set pin for motor as OUTPUT
+pinMode(motorPin, OUTPUT);
+
+} 
+
+void loop() {
+	//read the state of the button and store in int switchState variable
+switchState = digitalRead(buttonPin); 
+
+//turn the motor on/HIGH or off/LOW
+if(switchState == HIGH) {
+//turn the motor on
+digitalWrite(motorPin, HIGH);
+}
+
+else {
+
+//turn the motor off
+digitalWrite(motorPin, LOW);
+		
+} 
+}
+
+</code></pre>
+                    </div>
+                </div>
+                
+                <!-- Description paragraph -->
+                <h3>Project Description</h3>
+                <p class="project-description">
+                    For project 2_1, we used a DC motor, a button, and an Arduino to create a simple circuit. The button acts as a switch and when pressed, it completes the circuit and powers the motor. We used 2 9v batteries in this project. 1 battery powers the Arduino and the other power the motor. This is done so we have enough power to run both with enough speed. 
+
+                    For the code portion, we were provided with a skeleton code and had to fill in the blanks. We had to create our own variables and chose what pins to use for the buttons and motor. The code checks the state of the button and if it's pressed, it turns the motor on. If the button is not pressed, the motor is off. The difficulty I encountered was before we were supplied a code skeleton, I created a code that simply just turns the motor on and off every 2 seconds.
+
+                    Some of the real life applications of this project include using a button to control a motor in something like a toy car. It can also be used in something like a fan but with a switch instead of a button.
+                </p>
+            </div>
+            
+            <script>
+            function toggleCode() {
+                const codeContent = document.getElementById('codeContent');
+                const toggleBtn = document.querySelector('.code-toggle');
+                
+                if (codeContent.style.display === 'none') {
+                    codeContent.style.display = 'block';
+                    toggleBtn.innerHTML = 'Hide Code';
+                } else {
+                    codeContent.style.display = 'none';
+                    toggleBtn.innerHTML = 'View Code';
+                }
+            }
+            </script>
         </div>
     </body>
 </html>
