@@ -93,6 +93,58 @@ digitalWrite(motorPin, LOW);
                     Some of the real life applications of this project include using a button to control a motor in something like a toy car. It can also be used in something like a fan but with a switch instead of a button.
                 </p>
             </div>
+
+            <div class="project-section">
+                <h2>Project2_2: Potentiometer</h2>
+                <h4>2/12/26</h4>
+                <!-- Image placeholder -->
+                <img src="../images/p2_2potentiometer.png" alt="Project 2_2 Image" id="project-image">
+                
+                <!-- Code dropdown -->
+                <div class="code-dropdown">
+                    <button class="code-toggle" onclick="toggleCode2()">View Code</button>
+                    <div class="code-content" id="codeContent2" style="display: none;">
+                        <pre><code>//constant variable assigning potentiometer to the analog pin
+//set to const because value won't change
+const int potPin = A1;
+
+//constant variable assigning motor to output pin #
+const int motorPin = 9;
+
+//setup function
+void setup(){
+
+//function that will set pin for button as INPUT
+pinMode(potPin, INPUT); 
+//function that will set pin for motor as OUTPUT
+pinMode(motorPin, OUTPUT);
+
+} 
+
+void loop() {
+//creates a variable to store the value of the potentiometer
+int potVal = analogRead(A1);
+
+//variable to store the potentiometer value to motorSpeed
+//mapping the function that executes the conversion
+int motorSpeed = map(potVal, 0, 1023, 0, 255);
+
+analogWrite(motorPin, motorSpeed);
+
+//ten millisecond delay to prevent fluctuations in motor speed
+delay(10);
+}
+
+</code></pre>
+                    </div>
+                </div>
+                
+                <!-- Description paragraph -->
+                <h3>Project Description</h3>
+                <p class="project-description">
+                    
+                </p>
+            </div>
             
             <script>
             function toggleCode() {
@@ -105,6 +157,20 @@ digitalWrite(motorPin, LOW);
                 } else {
                     codeContent.style.display = 'none';
                     toggleBtn.innerHTML = 'View Code';
+                }
+            }
+            
+            function toggleCode2() {
+                const codeContent2 = document.getElementById('codeContent2');
+                const toggleBtns = document.querySelectorAll('.code-toggle');
+                const toggleBtn2 = toggleBtns[1]; // Second toggle button
+                
+                if (codeContent2.style.display === 'none') {
+                    codeContent2.style.display = 'block';
+                    toggleBtn2.innerHTML = 'Hide Code';
+                } else {
+                    codeContent2.style.display = 'none';
+                    toggleBtn2.innerHTML = 'View Code';
                 }
             }
             </script>
