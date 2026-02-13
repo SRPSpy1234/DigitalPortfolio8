@@ -147,6 +147,28 @@ delay(10);
                     Fortunately, I didn't run into any difficulties with either the build or the code. Other than a simple mistake of puting the wire meant for A1 int A0, everything went to plan. Some of the real world applications of this project include using a potentiometer to control the speed of a fan or a motor in an appliance. It can also be used to dim a light by controlling the amount of power that goes to the light.
                 </p>
             </div>
+
+            <div class="project-section">
+                <h2>Project2_Final: Windmill</h2>
+                <h4>2/13/26</h4>
+                <!-- Image placeholder -->
+                <img src="../images/p2_final.png" alt="Project 2_Final Image" id="project-image">
+                
+                <!-- Code dropdown -->
+                <div class="code-dropdown">
+                    <button class="code-toggle" onclick="toggleCode3()">View Code</button>
+                    <div class="code-content" id="codeContent3" style="display: none;">
+                        <pre><code>
+</code></pre>
+                    </div>
+                </div>
+                
+                <!-- Description paragraph -->
+                <h3>Project Description</h3>
+                <p class="project-description">
+                    
+                </p>
+            </div>
             
             <script>
             function toggleCode() {
@@ -173,6 +195,20 @@ delay(10);
                 } else {
                     codeContent2.style.display = 'none';
                     toggleBtn2.innerHTML = 'View Code';
+                }
+            }
+            
+            function toggleCode3() {
+                const codeContent3 = document.getElementById('codeContent3');
+                const toggleBtns = document.querySelectorAll('.code-toggle');
+                const toggleBtn3 = toggleBtns[2]; // Third toggle button
+                
+                if (codeContent3.style.display === 'none') {
+                    codeContent3.style.display = 'block';
+                    toggleBtn3.innerHTML = 'Hide Code';
+                } else {
+                    codeContent3.style.display = 'none';
+                    toggleBtn3.innerHTML = 'View Code';
                 }
             }
             </script>
