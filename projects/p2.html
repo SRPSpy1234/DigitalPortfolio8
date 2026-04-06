@@ -161,7 +161,7 @@ delay(10);
                 <h4>2/13/26</h4>
                 <!-- Images with site-consistent styling -->
                 <div style="text-align: center; margin: 20px 0;">
-                    <div style="display: inline-block; margin: 10px;">
+                    <div style="display: inline-block; margin: 10px;">v
                         <h4>Closed Windmill</h4>
                         <img src="../images/p2_final_closed.png" alt="Project Final - Closed Windmill" id="project-image" style="max-width: 400px;">
                     </div>
@@ -175,6 +175,140 @@ delay(10);
                 <div class="code-dropdown">
                     <button class="code-toggle" onclick="toggleCode3()">View Code</button>
                     <div class="code-content" id="codeContent3" style="display: none;">
+                        <pre><code>
+//			Constant Variables
+
+//Assign on/off button to pin 5 to 13
+const int buttonPin1 = 5;
+//Assign direction button to pin 12
+const int buttonPin2 = 4;
+//constant variable assigning potentiometer to the analog pin
+//set to const because value won't change
+const int potPin = A1;
+//Assign enabled pin to 9
+const int enabledPin = 9;
+//Assign controller 1 to pin 2
+const int controller1Pin = 3;
+//Assign controller 2 to pin 3
+const int controller2Pin = 2;
+
+
+//			 Integer Variables
+
+//Variable to store the state of the on/off button
+int button1State = 0;
+//Variable to store the state of the direction button
+int button2State = 0;
+//Variable to store motor enabled state
+int motorEnabled = 0;
+//Variable to store motor speed
+int motorSpeed = 0;
+//Variable to store initial motor direction
+int motorDirection = 1;
+
+
+//				Void Setup
+
+
+void setup(){
+
+//function that will set pin for button as INPUT
+pinMode(5, INPUT_PULLUP); 
+//function that will set pin for direction button as INPUT
+pinMode(4, INPUT_PULLUP);
+//function that will set pin for potentiometer as INPUT
+pinMode(A1, INPUT);
+//function that will set controller 1 pin as OUTPUT
+pinMode(2, OUTPUT);
+//function that will set controller 2 pin as OUTPUT
+pinMode(3, OUTPUT);
+//function that will set controller 2 pin as OUTPUT
+pinMode(9, OUTPUT);
+//function that will set controller 1 pin as OUTPUT
+digitalWrite(9, LOW);
+
+
+} 
+
+void loop() {
+//Reads on/off button state
+button1State = digitalRead(5);
+//1ms Delay
+delay(1);
+//Reads direction button state
+button2State = digitalRead(4);
+//1ms Delay
+delay(1);
+//Maps digital signal to analog
+motorSpeed = analogRead(A1)/4;
+  
+motorEnabled = (button1State == LOW);
+motorDirection = (button2State == LOW);
+
+  
+//If statement to compare motorenabled to value of 1
+  if(motorEnabled == 1) {
+    
+    analogWrite(9, motorSpeed);
+  }
+  else {
+    analogWrite(9, 0);
+  }
+
+
+//If statement to compare motorenabled to value of 1
+  if(motorDirection == 1) {
+    
+    digitalWrite(3, HIGH);
+    digitalWrite(2, LOW);
+  }
+  
+  else {
+    
+    digitalWrite(3, LOW);
+    digitalWrite(2, HIGH);
+  }  
+
+  
+  
+}
+
+
+</code></pre>
+                    </div>
+                </div>
+                
+                <!-- Description paragraph -->
+                <h3>Project Description</h3>
+                <p class="project-description">
+                  Code generation for the project 2 final was a reasonably long process. For the first part we, as a class, created both our constant variables and regular variables. We also created our pinMode setup for later in our project. After we did that together, we were given sudo code (code written in plain English) and had to handwrite the actual code that corresponed to it. In the code we wrote, we needed to map the potentiometer valus to work for the motor, write 6 if statments to control the on or off state of the motor, the direction of the motor and the speed of the motor. After we handwrote it, we tested it in our simulations and the had to adjust it to make it as simple as possible. Our programmer was the one that had to shorten it, but unfortunately, he was out so I completed it without him. Since we used a toggle button instead of the normal pushbutton, we had to use input pullup for the pins so it felt more natural to use. The code checks if the button is on and if it is, it checks the value of the potentiometer and powers the motor. 
+                </p>
+                <p class="project-description">
+                  For the build portion of the project, we had to make a windmill that fit the specifications of the project. I chose to 3D print our windmill and designed it myself. The dimentions of the project were 6 x 6 x 12 (L x W x H). I designed the project in onShape and then for minor adjustments, used Tinkercad to space buttons and switches properly. The build ended up take a while with many different drafts and iterations being made. The drafts ranged from a super basic base to a hinged and latching mechanism that would allow easy access to the insides. The final design ended up being that hinged mechanism and a super complex tower that held all of the components well. The most difficult part was definitely the base. Even a little mistake in the measurements of the base caused the whole thing to not fit parts and it had to be reprinted.
+                </p>
+                <p class="project-description">
+                 We didn't run into many errors in this project thankfully, but there were a few small things that could have gone better. For one, during the code portion, we needed to make a few adjustments for the toggle button but we accidentally changed a pin assignent and had to go back and solve it. For the build portion, other than a few small measurment errors it went smoothly. As far as our biggest issue goes, for some reason our circuit wasn't working and we couldn't figure out why. After replacing all the components and even the Arduino itself, we finally determined the the issue was the breadboard. It had gotten pulled out wrong, damaging the rails and preventing the circuit from working. After replacing the breadboard, everything worked perfectly with the new buttons.
+                </p>
+                <p class="project-description">
+                 As far as real world applications go, there are many differnt things that this could be used for. To start, a fan could be using these for power, direction and speed control. It could also be used in something like an RC boat for power, propeller direction and its speed. A disco ball could use something like this to power on/off, change direction and even how fast it spins.
+                </p>
+            </div>
+
+            <div class="project-section">
+                <h2>Project2_Final Pt. 2:Dual Motors</h2>
+                <h4>4/6/26</h4>
+                <!-- Images with site-consistent styling -->
+                <div style="text-align: center; margin: 20px 0;">
+                    <div style="display: inline-block; margin: 10px;">
+                        <h4>Dual Motors</h4>
+                        <img src="../images/p2_final_pt2.png" alt="Project Final Pt. 2 - Dual Motors" id="project-image" style="max-width: 400px;">
+                    </div>
+                </div>
+                
+                <!-- Code dropdown -->
+                <div class="code-dropdown">
+                    <button class="code-toggle" onclick="toggleCode4()">View Code</button>
+                    <div class="code-content" id="codeContent4" style="display: none;">
                         <pre><code>
 //			Constant Variables
 
@@ -333,6 +467,20 @@ motorDirection = (button2State == LOW);
                 } else {
                     codeContent3.style.display = 'none';
                     toggleBtn3.innerHTML = 'View Code';
+                }
+            }
+            
+            function toggleCode4() {
+                const codeContent4 = document.getElementById('codeContent4');
+                const toggleBtns = document.querySelectorAll('.code-toggle');
+                const toggleBtn4 = toggleBtns[3]; // Fourth toggle button
+                
+                if (codeContent4.style.display === 'none') {
+                    codeContent4.style.display = 'block';
+                    toggleBtn4.innerHTML = 'Hide Code';
+                } else {
+                    codeContent4.style.display = 'none';
+                    toggleBtn4.innerHTML = 'View Code';
                 }
             }
             </script>
