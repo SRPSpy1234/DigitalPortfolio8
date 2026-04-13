@@ -29,6 +29,206 @@
         
         <div class="body">
             <h1>Project 3</h1>
+
+            <div class="project-section">
+                <h2>Project3_Final: LCD Screens</h2>
+                <h4>4/13/26</h4>
+                <!-- Images with site-consistent styling -->
+                <div style="text-align: center; margin: 20px 0;">
+                    <div style="display: inline-block; margin: 10px;">
+                        <h4>Circuits</h4>
+                        <img src="../images/p3_final_1.png" alt="Project 3 Final - Image 1" id="project-image" style="max-width: 400px;">
+                    </div>
+                    <div style="display: inline-block; margin: 10px;">
+                        <h4>Display</h4>
+                        <img src="../images/p3_final_2.png" alt="Project 3 Final - Image 2" id="project-image" style="max-width: 400px;">
+                    </div>
+                </div>
+                
+                <!-- Code dropdown -->
+                <div class="code-dropdown">
+                    <button class="code-toggle" onclick="toggleCode()">View Code</button>
+                    <div class="code-content" id="codeContent" style="display: none;">
+                        <pre><code>
+//Imports the LCD library
+#include &lt;LiquidCrystal.h&gt;
+
+//Tells arduino what pins are connected to the LCD screen
+LiquidCrystal lcd(7, 6, 2, 3, 4, 5);
+
+//Constant variable for button pin
+const int btnPin = 12;
+//Variable to set button state to 0
+int btnState = 0;
+//Variable to set prev button state to 0
+int prevBtnState = 0;
+//Create a variable named 'reply' to store random numbers of advertisements
+int reply;
+
+
+void setup() {
+  //Setup  LCD screen as a 16x2 grid
+  lcd.begin(16, 2);
+  //Set button pin as an input
+  pinMode(12, INPUT);
+  //Set rs as an output
+  pinMode(7, OUTPUT);
+  //Set en as an output
+  pinMode(6, OUTPUT);
+  //Set pin 5-2 as outputs
+  pinMode(5, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(3, OUTPUT);
+  pinMode(2, OUTPUT);
+  
+}
+
+void loop() {
+  //Change the value of the button state to read the button pin
+  btnState = digitalRead(12);
+  //Create an if statement that makes sure the button state in not equal to the previous state
+  if (btnState != prevBtnState) {
+    //Create an if statement that checks if the button state is equal to low
+    if (btnState == LOW) {
+      //If button state is equal to low, then give the reply variable a calue of 7
+      reply = random(7);
+      //clear the lcd screen
+      lcd.clear();
+      	//Initiate the switch statement that will store 7 replies
+     	switch(reply) {
+       
+        //Ad #1
+        case 0:
+        //Set location of the cursor for printing brand name (col, row)
+        lcd.setCursor(0, 0);
+        //Print brand name
+        lcd.print("Monster Energy");
+        //Set loc of cursor for slogan
+        lcd.setCursor(0, 1);
+        //Print the slogan
+        lcd.print("Unleash the Beast");
+        //Ends case 0
+        break;
+        
+        //Ad #2
+        case 1:
+        //Set location of the cursor for printing brand name (col, row)
+        lcd.setCursor(0, 0);
+        //Print brand name
+        lcd.print("Ferrari");
+        //Set loc of cursor for slogan
+        lcd.setCursor(0, 1);
+        //Print the slogan
+        lcd.print("We are the competition");
+        //Ends case 1
+        break;
+   
+  		//Ad #3
+        case 2:
+        //Set location of the cursor for printing brand name (col, row)
+        lcd.setCursor(0, 0);
+        //Print brand name
+        lcd.print("Microsoft");
+        //Set loc of cursor for slogan
+        lcd.setCursor(0, 1);
+        //Print the slogan
+        lcd.print("Be what's next");
+        //Ends case 2
+        break;
+          
+        //Ad #4
+        case 3:
+        //Set location of the cursor for printing brand name (col, row)
+        lcd.setCursor(0, 0);
+        //Print brand name
+        lcd.print("Chase Bank");
+        //Set loc of cursor for slogan
+        lcd.setCursor(0, 1);
+        //Print the slogan
+        lcd.print("Make More of What's Yours");
+        //Ends case 3
+        break;
+        
+        //Ad #5
+        case 4:
+        //Set location of the cursor for printing brand name (col, row)
+        lcd.setCursor(0, 0);
+        //Print brand name
+        lcd.print("Jetblue");
+        //Set loc of cursor for slogan
+        lcd.setCursor(0, 1);
+        //Print the slogan
+        lcd.print("You above all");
+        //Ends case 4
+        break;
+          
+        //Ad #6
+        case 5:
+        //Set location of the cursor for printing brand name (col, row)
+        lcd.setCursor(0, 0);
+        //Print brand name
+        lcd.print("Emirates");
+        //Set loc of cursor for slogan
+        lcd.setCursor(0, 1);
+        //Print the slogan
+        lcd.print("Fly better");
+        //Ends case 5
+        break;
+          
+        //Ad #7
+        case 6:
+        //Set location of the cursor for printing brand name (col, row)
+        lcd.setCursor(0, 0);
+        //Print brand name
+        lcd.print("Nike");
+        //Set loc of cursor for slogan
+        lcd.setCursor(0, 1);
+        //Print the slogan
+        lcd.print("Just do it");
+        //Ends case 6
+        break;
+  
+  
+      }
+    }
+  }
+prevBtnState = btnState;
+}
+
+</code></pre>
+                    </div>
+                </div>
+                
+                <!-- Description paragraph -->
+                <h3>Project Description</h3>
+                <p class="project-description">
+                    For the code generation portion of this project, I coded a program that displays 7 random advertisements on a 16x2 LCD screen when a button is pressed. I made my advertisments use the brand name and the slogan of that brand. I used the LCD library to make screen function correctly. I had only one constant variable, which was the button pin. I had two variable to store the button state and the prev button state. I also created a variable named 'reply' that didn't have a value until the random function was used to give it a value 1-7. I used one if statement to check if the button state was not equal to the previous button state and when that was true, another if statement checked if  the button state was low. 
+                </p>
+                <p class="project-description">
+                    For the build portion of this project, I used a 16x2 LCD screen, a push button, and an R4 Arduino board. I connected the LCD to the breadboard with some wires and then jumped those wires to the arduino pins. We mostly used digital pins for this project, as the only analog value we had was the potentiometer, which connected directly to the LCD screen at pin V0. The button was connected to the breadboard and then jumped to pin 12 on the arduino. We used both a 10k ohm resistor and a 220 ohm resistor for this project. We used them to create a pull down resistor for the button.
+                </p>
+                <p class="project-description">
+                    During this project, we encountered a few minor issues. One of them was that after being built, the LCD displayed random characters instead of the advertisements. It looked to be some sort of ancient script and it was unreadable. 
+                </p>
+                <p class="project-description">
+                    There are many real world applications for this project. One of them could be for a billboard
+                </p>
+            </div>
+            
+            <script>
+            function toggleCode() {
+                const codeContent = document.getElementById('codeContent');
+                const toggleBtn = document.querySelector('.code-toggle');
+                
+                if (codeContent.style.display === 'none') {
+                    codeContent.style.display = 'block';
+                    toggleBtn.innerHTML = 'Hide Code';
+                } else {
+                    codeContent.style.display = 'none';
+                    toggleBtn.innerHTML = 'View Code';
+                }
+            }
+            </script>
         </div>
     </body>
 </html>
