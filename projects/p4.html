@@ -29,6 +29,142 @@
         
         <div class="body">
             <h1>Project 4</h1>
+
+            <div class="project-section">
+                <h2>Project4_DIY</h2>
+                <h4>4/20/26</h4>
+                <!-- Images with site-consistent styling -->
+                <div style="text-align: center; margin: 20px 0;">
+                    <div style="display: inline-block; margin: 10px;">
+                        <h4>Green</h4>
+                        <img src="../images/p4_green.png" alt="Project 4 - Green" id="project-image" style="max-width: 400px;">
+                    </div>
+                    <div style="display: inline-block; margin: 10px;">
+                        <h4>Both</h4>
+                        <img src="../images/p4_both.png" alt="Project 4 - Both" id="project-image" style="max-width: 400px;">
+                    </div>
+                    <div style="display: inline-block; margin: 10px;">
+                        <h4>Red</h4>
+                        <img src="../images/p4_red.png" alt="Project 4 - Red" id="project-image" style="max-width: 400px;">
+                    </div>
+                </div>
+                
+                <!-- Code dropdown -->
+                <div class="code-dropdown">
+                    <button class="code-toggle" onclick="toggleCode()">View Code</button>
+                    <div class="code-content" id="codeContent" style="display: none;">
+                        <pre><code>
+//Code to make two LEDs follow the values of a potentiometer
+
+//Variables to set both red and green LED pin to their digital pin
+const int greenLED = 11;
+const int redLED = 12;
+
+//Variable to set pot pin to Analog 1
+const int potPin = A1;
+
+//Varialbe to store pot value
+int potValue = 0;
+
+
+//							Void Setup
+  
+  
+void setup() {
+  //Sets green and red led pins to output
+  pinMode(11, OUTPUT);
+  pinMode(12, OUTPUT);
+  //Sets analog pin for pot as input
+  pinMode(A1, INPUT);
+}
+
+
+//							Void Loop
+
+
+void loop() {
+  //Variable to convert the analog pot val into a digital value
+  potValue = analogRead(A1)/4;
+  
+  //If statement to check whether the green LED should be off
+  if(potValue != 255) {
+    //Writes the low signal to the LED
+    digitalWrite(11, LOW);
+  }
+  
+  //If statement to check whether the red LED should be off
+  if(potValue >= 0) {
+    if(potValue == 255) {
+      digitalWrite(11, HIGH);
+      digitalWrite(12, LOW);
+    }
+    if(potValue == 0) {
+      digitalWrite(12, HIGH);
+      digitalWrite(11, LOW);
+    }
+    if(potValue != 255 && potValue != 0) {
+      digitalWrite(11, HIGH);
+      delay(500);
+      digitalWrite(11, LOW);
+      delay(500);
+  }
+    if(potValue != 0 && potValue != 255) {
+      digitalWrite(12, LOW);
+      delay(500);
+      digitalWrite(12, HIGH);
+      delay(500);
+  }
+  
+  //If statement to check if green LED should be on
+  if(potValue == 255) {
+    digitalWrite(11, HIGH);
+  }
+  
+  //If statement to check if red LED should be on
+  if(potValue == 0) {
+    digitalWrite(12, HIGH);
+  }
+
+ 
+  }
+}
+</code></pre>
+                    </div>
+                </div>
+                
+                <!-- Description paragraph -->
+                <h3>Project Description</h3>
+                <h4>Code Generation</h4>
+                <p class="project-description">
+                    For the code generation portion of this project, we were left to make our own code with zero outside help. The requirements for the project were, using a potentiometer, when the potentiometer's value was 0, the red LED would be on by itself and when the potentiometer's value was 255, the green LED would be on by itself. When the potentiometer's value was between 0 and 255, both LEDs would be on but they would alternate every half second. I used the analogRead function to read the value of the potentiometer and then divided that value by 4 to convert it to a digital value between 0 and 255. I used multiple if statements to check whether the potentiometer's value was 0, 255, or between those two values and then used digitalWrite to turn the LEDs on or off accordingly.
+                </p>
+                <h4>Building</h4>
+                <p class="project-description">
+                    For the building portion of this project, we still had to do it all ourselves. We needed to turn our simulation into the real build. We used an Arduino R3, a new breadboard, a 10 kilo ohm potentiometer, 2x 220 ohm resistors and a red and green LED. After connecting it all. The red LED was connected to pin 12 on the arduino and the green LED was connected to pin 11. The potentiometer was connected to the breadboard and then I jumped to analog pin A1 on the arduino. We used the 220 ohm resistors on the LEDs.
+                </p>
+                <h4>Errors</h4>
+                <p class="project-description">
+                    Fortunately, I didn't run into any errors. I was able to get everything working perfectly on the first try. The only minor thing i ran into was when adding a 3rd behavior for extra house points, I missed an amprosand in one of the if statements resulting in the LEDs not alternating properly. Once I added the amprosand, everything worked perfectly.
+                </p>
+                <h4>Real Life Application</h4>
+                <p class="project-description">
+                    The best real life applications of this project are in how the potentiometer contolled the other components on the circuit. A good example would be something like a dual colored lamp that only turned on its soft white light when the potentiometer was turned all the way to one side and only turned on its bright white light when the potentiometer was turned all the way to the other side.
+            </div>
+            
+            <script>
+            function toggleCode() {
+                const codeContent = document.getElementById('codeContent');
+                const toggleBtn = document.querySelector('.code-toggle');
+                
+                if (codeContent.style.display === 'none') {
+                    codeContent.style.display = 'block';
+                    toggleBtn.innerHTML = 'Hide Code';
+                } else {
+                    codeContent.style.display = 'none';
+                    toggleBtn.innerHTML = 'View Code';
+                }
+            }
+            </script>
         </div>
     </body>
 </html>
