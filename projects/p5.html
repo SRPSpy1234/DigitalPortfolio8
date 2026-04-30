@@ -55,7 +55,42 @@
                     <button class="code-toggle" onclick="toggleCode()">View Code</button>
                     <div class="code-content" id="codeContent" style="display: none;">
                         <pre><code>
+                        #include &lt;Servo.h&gt;
 
+Servo theServo;
+
+//								Variables
+
+//Variable for pot pin
+const int potPin = A1;
+//Variable to store pot val
+int potVal = 0;
+//Store servo angle between 0-179 degrees
+int angle;
+
+
+
+void setup() {
+  //Assign pin 9 to the servo input
+  theServo.attach(9);
+}
+
+void loop() {
+    //Pot val rewrite with valu
+  potVal = analogRead(A1);
+  //Converts potentiometer values to servo values and stores
+  angle = map(potVal, 0, 1023, 0, 179);
+  
+  //Move servo to position
+  theServo.write(angle);
+
+
+		
+  //15 millisecond delay
+  delay(15);
+
+
+}
                         </code></pre>
                     </div>
                 </div>
@@ -64,11 +99,12 @@
                 <h3>Project Description</h3>
                 <h4>Code Generation</h4>
                 <p class="project-description">
+                    The code generation of this project was very simple. It only required around 3 variables and one mapping function. We used the servo library to control the servo's angle. We took the value of the potentiometer and mapped it to the servo's values of 0-179 degrees. The code was super easy to write and we filled out our variables and stuff.
                  
                 </p>
                 <h4>Building</h4>
                 <p class="project-description">
-                    
+                    The build portion of this project was one of my favorites. Rather than buuilding, I designed and 3D prited the meter itself, the shell  the circuitry and the motor arm. I designed the shell to be a 6" rounded box with a mounting bracket for the servo and a hole for the potentiometer. I made the arm around 2.5" long and designed it to be an arrow pointing to the set mood. The build was really fun and I quite enjoyed it. 
                 </p>
                 <h4>Errors</h4>
                 <p class="project-description">
