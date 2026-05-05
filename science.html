@@ -3,6 +3,7 @@
 <html>
     <!-- The head tag holds the metadata for our site -->
     <head>
+        <meta charset="UTF-8">
         <!-- This is the name of the website browser tab -->
         <title>Digital Portfolio 8</title>
         <!-- Links my HTML page to my CSS page -->
@@ -162,11 +163,26 @@
                     </div>
                 </div>
             </div>
+
+            <div class="chemistry-calculator">
+                <h2>Chemical Formula Calculator & Breaker Downer</h2>
+                <p>Type a chemical formula, including ionic charge like <code>NH4+</code> or <code>SO4^2-</code>, and click analyze to see atom counts, compound name (if recognized), charge, and likely polyatomic ions.</p>
+                <div class="calculator-inputs">
+                    <div class="input-group">
+                        <label for="chemicalFormula">Chemical Formula:</label>
+                        <input type="text" id="chemicalFormula" placeholder="e.g. Ca(NO3)2, NH4+, or Mg^2+" autocomplete="off">
+                    </div>
+                    <button onclick="breakDownFormula()" class="chemistry-button">Analyze Formula</button>
+                </div>
+                <div class="calculator-results" id="chemical-results">
+                    <p>Enter a formula and click analyze to see the breakdown.</p>
+                </div>
+            </div>
         </div>
-        
+
         <!-- Load Chart.js library first -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <!-- Then load our physics calculator script -->
-        <script src="../assets/myIdea.js"></script>
+        <script src="assets/myIdea.js"></script>
     </body>
 </html>

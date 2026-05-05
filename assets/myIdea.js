@@ -1119,3 +1119,231 @@ function createPresentationCharts() {
         <p><em>Click "Create Interactive Graph" to return to editing mode.</em></p>
     `;
 }
+
+// Chemical formula parser and breakdown feature for science page
+const POLYATOMIC_IONS = [
+    { formula: 'NH4', name: 'Ammonium', charge: 1 },
+    { formula: 'OH', name: 'Hydroxide', charge: -1 },
+    { formula: 'NO3', name: 'Nitrate', charge: -1 },
+    { formula: 'SO4', name: 'Sulfate', charge: -2 },
+    { formula: 'CO3', name: 'Carbonate', charge: -2 },
+    { formula: 'PO4', name: 'Phosphate', charge: -3 },
+    { formula: 'HCO3', name: 'Bicarbonate', charge: -1 },
+    { formula: 'CN', name: 'Cyanide', charge: -1 },
+    { formula: 'MnO4', name: 'Permanganate', charge: -1 },
+    { formula: 'Cr2O7', name: 'Dichromate', charge: -2 },
+    { formula: 'NO2', name: 'Nitrite', charge: -1 },
+    { formula: 'SO3', name: 'Sulfite', charge: -2 },
+    { formula: 'CH3COO', name: 'Acetate', charge: -1 }
+];
+
+const COMMON_COMPOUNDS = [
+    { formula: 'CO', name: 'Carbon Monoxide', type: 'neutral molecule' },
+    { formula: 'CO2', name: 'Carbon Dioxide', type: 'neutral molecule' },
+    { formula: 'H2O', name: 'Water', type: 'neutral molecule' },
+    { formula: 'H2O2', name: 'Hydrogen Peroxide', type: 'neutral molecule' },
+    { formula: 'O2', name: 'Oxygen', type: 'neutral molecule' },
+    { formula: 'N2', name: 'Nitrogen', type: 'neutral molecule' },
+    { formula: 'H2', name: 'Hydrogen', type: 'neutral molecule' },
+    { formula: 'CH4', name: 'Methane', type: 'neutral molecule' },
+    { formula: 'C2H6', name: 'Ethane', type: 'neutral molecule' },
+    { formula: 'C3H8', name: 'Propane', type: 'neutral molecule' },
+    { formula: 'NH3', name: 'Ammonia', type: 'neutral molecule' },
+    { formula: 'SO2', name: 'Sulfur Dioxide', type: 'neutral molecule' },
+    { formula: 'NO', name: 'Nitric Oxide', type: 'neutral molecule' },
+    { formula: 'NO2', name: 'Nitrogen Dioxide', type: 'neutral molecule' },
+    { formula: 'HCl', name: 'Hydrochloric Acid', type: 'neutral molecule' },
+    { formula: 'H2SO4', name: 'Sulfuric Acid', type: 'neutral molecule' },
+    { formula: 'NaCl', name: 'Sodium Chloride', type: 'ionic compound' },
+    { formula: 'CaCO3', name: 'Calcium Carbonate', type: 'ionic compound' },
+    { formula: 'NaOH', name: 'Sodium Hydroxide', type: 'ionic compound' },
+    { formula: 'KOH', name: 'Potassium Hydroxide', type: 'ionic compound' },
+    { formula: 'MgSO4', name: 'Magnesium Sulfate', type: 'ionic compound' },
+    { formula: 'CuSO4', name: 'Copper(II) Sulfate', type: 'ionic compound' },
+    { formula: 'Fe2O3', name: 'Iron(III) Oxide', type: 'ionic compound' },
+    { formula: 'Al2O3', name: 'Aluminum Oxide', type: 'ionic compound' },
+    { formula: 'CaO', name: 'Calcium Oxide', type: 'ionic compound' },
+    { formula: 'Na2CO3', name: 'Sodium Carbonate', type: 'ionic compound' }
+];
+
+const ATOMIC_WEIGHTS = {
+    H: 1.008, He: 4.0026, Li: 6.94, Be: 9.0122, B: 10.81, C: 12.011, N: 14.007, O: 15.999, F: 18.998, Ne: 20.18,
+    Na: 22.99, Mg: 24.305, Al: 26.982, Si: 28.085, P: 30.974, S: 32.06, Cl: 35.45, Ar: 39.948, K: 39.098, Ca: 40.078,
+    Fe: 55.845, Cu: 63.546, Zn: 65.38, Br: 79.904, I: 126.904, Ag: 107.8682, Au: 196.96657, Pb: 207.2, Hg: 200.59,
+    Sn: 118.71, Ni: 58.693, Co: 58.933, Mn: 54.938, Cr: 51.996, Ti: 47.867
+};
+
+const ELEMENT_NAMES = {
+    H: 'Hydrogen', He: 'Helium', Li: 'Lithium', Be: 'Beryllium', B: 'Boron', C: 'Carbon', N: 'Nitrogen',
+    O: 'Oxygen', F: 'Fluorine', Ne: 'Neon', Na: 'Sodium', Mg: 'Magnesium', Al: 'Aluminum', Si: 'Silicon',
+    P: 'Phosphorus', S: 'Sulfur', Cl: 'Chlorine', Ar: 'Argon', K: 'Potassium', Ca: 'Calcium',
+    Ti: 'Titanium', Cr: 'Chromium', Mn: 'Manganese', Fe: 'Iron', Co: 'Cobalt', Ni: 'Nickel',
+    Cu: 'Copper', Zn: 'Zinc', Br: 'Bromine', Ag: 'Silver', Sn: 'Tin', I: 'Iodine',
+    Au: 'Gold', Hg: 'Mercury', Pb: 'Lead'
+};
+
+function breakDownFormula() {
+    let input = document.getElementById('chemicalFormula').value.trim();
+    let output = document.getElementById('chemical-results');
+    if (!input) {
+        output.innerHTML = '<p>Please enter a chemical formula to analyze.</p>';
+        return;
+    }
+
+    try {
+        let parsed = parseChemicalFormula(input);
+        let compound = identifyCommonCompound(input);
+        let ions = identifyPolyatomicIons(input);
+        let molarMass = calculateMolarMass(parsed.atomCounts);
+        let classification = classifyFormula(parsed.charge, ions, compound);
+
+        output.innerHTML = `
+            <h3>Chemical Formula Breakdown</h3>
+            <div class="chemical-summary">
+                <p><strong>Formula:</strong> ${parsed.formula}</p>
+                ${compound ? `<p><strong>Compound Name:</strong> ${compound.name}</p>` : ''}
+                <p><strong>Net Charge:</strong> ${formatCharge(parsed.charge)}</p>
+                <p><strong>Classification:</strong> ${classification}</p>
+                <p><strong>Molar Mass Estimate:</strong> ${molarMass ? molarMass.toFixed(2) + ' g/mol' : 'Unknown'}</p>
+            </div>
+            <h4>Atom Counts</h4>
+            <ul class="chemical-list">
+                ${Object.entries(parsed.atomCounts).map(([element, count]) => `<li>${ELEMENT_NAMES[element] || element} (${element}): ${count}</li>`).join('')}
+            </ul>
+            ${ions.length ? `<h4>Likely Polyatomic Ions</h4>
+                <ul class="chemical-list">
+                    ${ions.map(ion => `<li>${ion.name} (${ion.formula}) - count: ${ion.count}, charge: ${formatCharge(ion.charge)}</li>`).join('')}
+                </ul>` : '<p>No common polyatomic ions detected.</p>'}
+        `;
+    } catch (error) {
+        output.innerHTML = `<p>Unable to parse the formula. Please check the format and try again.</p><p><em>${error.message}</em></p>`;
+    }
+}
+
+function parseChemicalFormula(formula) {
+    let cleaned = formula.replace(/\s+/g, '');
+    let charge = 0;
+
+    // Multi-digit charge requires explicit caret to avoid clashing with subscripts
+    // e.g. SO4^2- (charge -2) vs NH4+ (subscript 4, charge +1). Sign defaults to +.
+    let multiMatch = cleaned.match(/\^(\d+)([+-]?)$/);
+    if (multiMatch) {
+        let magnitude = parseInt(multiMatch[1], 10);
+        let sign = multiMatch[2] === '-' ? -1 : 1;
+        charge = sign * magnitude;
+        cleaned = cleaned.slice(0, -multiMatch[0].length);
+    } else {
+        let singleMatch = cleaned.match(/([+-])$/);
+        if (singleMatch) {
+            charge = singleMatch[1] === '+' ? 1 : -1;
+            cleaned = cleaned.slice(0, -1);
+        }
+    }
+
+    if (cleaned.includes('^')) {
+        throw new Error("'^' should appear only before a charge at the end, e.g. SO4^2-");
+    }
+
+    let index = 0;
+    function parseSegment() {
+        let counts = {};
+        while (index < cleaned.length) {
+            if (cleaned[index] === '(') {
+                index++;
+                let innerCounts = parseSegment();
+                if (cleaned[index] !== ')') {
+                    throw new Error('Missing closing parenthesis');
+                }
+                index++;
+                let multiplierMatch = cleaned.slice(index).match(/^\d+/);
+                let multiplier = multiplierMatch ? parseInt(multiplierMatch[0], 10) : 1;
+                if (multiplierMatch) {
+                    index += multiplierMatch[0].length;
+                }
+                Object.entries(innerCounts).forEach(([element, value]) => {
+                    counts[element] = (counts[element] || 0) + value * multiplier;
+                });
+                continue;
+            }
+
+            if (cleaned[index] === ')') {
+                break;
+            }
+
+            let match = cleaned.slice(index).match(/^([A-Z][a-z]?)(\d*)/);
+            if (!match) {
+                throw new Error(`Invalid formula near '${cleaned.slice(index)}'`);
+            }
+
+            let element = match[1];
+            let amount = match[2] ? parseInt(match[2], 10) : 1;
+            counts[element] = (counts[element] || 0) + amount;
+            index += match[0].length;
+        }
+        return counts;
+    }
+
+    let atomCounts = parseSegment();
+    if (index !== cleaned.length) {
+        throw new Error('Unexpected characters remain in the formula');
+    }
+
+    return { formula, atomCounts, charge };
+}
+
+function stripCharge(formula) {
+    return formula.replace(/\s+/g, '').replace(/\^\d+[+-]?$/, '').replace(/[+-]$/, '');
+}
+
+function identifyCommonCompound(formula) {
+    let normalized = stripCharge(formula);
+    return COMMON_COMPOUNDS.find(compound => compound.formula === normalized);
+}
+
+function identifyPolyatomicIons(formula) {
+    let normalized = stripCharge(formula);
+    let ionsFound = [];
+    POLYATOMIC_IONS.forEach((ion) => {
+        let escaped = ion.formula.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        let totalCount = 0;
+        let match;
+
+        // Parenthesized form: (ION)N  e.g. Ca(NO3)2
+        let parenRegex = new RegExp(`\\(${escaped}\\)(\\d*)`, 'g');
+        while ((match = parenRegex.exec(normalized)) !== null) {
+            totalCount += match[1] ? parseInt(match[1], 10) : 1;
+        }
+
+        // Unparenthesized form: ion must be followed by uppercase letter, (, or end of string
+        // This correctly handles NaOH, CaCO3, KNO3, Na2SO4, NH4Cl, etc.
+        let freeRegex = new RegExp(`${escaped}(\\d*)(?=[A-Z(]|$)`, 'g');
+        while ((match = freeRegex.exec(normalized)) !== null) {
+            totalCount += match[1] ? parseInt(match[1], 10) : 1;
+        }
+
+        if (totalCount > 0) {
+            ionsFound.push({ ...ion, count: totalCount });
+        }
+    });
+    return ionsFound;
+}
+
+function calculateMolarMass(atomCounts) {
+    return Object.entries(atomCounts).reduce((total, [element, count]) => {
+        let weight = ATOMIC_WEIGHTS[element] || 0;
+        return total + weight * count;
+    }, 0);
+}
+
+function classifyFormula(charge, ions, compound) {
+    if (charge > 0) return 'Cation';
+    if (charge < 0) return 'Anion';
+    if (compound) return compound.type;
+    if (ions.length) return 'Ionic compound / contains polyatomic ions';
+    return 'Neutral molecule';
+}
+
+function formatCharge(charge) {
+    if (charge === 0) return '0';
+    return charge > 0 ? `+${charge}` : `${charge}`;
+}

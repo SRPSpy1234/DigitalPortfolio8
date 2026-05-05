@@ -44,7 +44,7 @@ h1 {
 p {
     text-align: center;
     color: var(--primary-text-color);
-    background-color: var(--background-color);
+    background-color: transparent;
     font-size: 20px;
     margin-top: 5px;
     margin-bottom: var(--standard-spacing);
@@ -592,17 +592,19 @@ h4 {
 }
 
 /* Physics Calculator Styling */
-.physics-calculator {
+.physics-calculator,
+.chemistry-calculator {
     background-color: rgba(19, 240, 236, 0.05);
     border: 3px solid var(--accent-color);
     border-radius: 15px;
     padding: 30px;
     margin: 30px auto;
-    max-width: 600px;
+    max-width: 700px;
     text-align: center;
 }
 
-.physics-calculator h2 {
+.physics-calculator h2,
+.chemistry-calculator h2 {
     color: var(--accent-color);
     margin-bottom: 10px;
 }
@@ -640,7 +642,8 @@ h4 {
     box-shadow: 0 0 10px rgba(19, 240, 236, 0.5);
 }
 
-.physics-button {
+.physics-button,
+.chemistry-button {
     background: linear-gradient(135deg, var(--accent-color), #00d4ff);
     color: var(--secondary-text-color);
     border: none;
@@ -654,7 +657,12 @@ h4 {
     margin-top: 10px;
 }
 
-.physics-button:hover {
+.chemistry-button {
+    background: linear-gradient(135deg, #ff9f1c, #ff6b6b);
+}
+
+.physics-button:hover,
+.chemistry-button:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(19, 240, 236, 0.6);
 }
@@ -668,9 +676,36 @@ h4 {
     text-align: left;
 }
 
+.calculator-results p,
+.calculator-results h3,
+.calculator-results h4,
+.calculator-results ul,
+.calculator-results li,
+.calculator-results div {
+    background-color: transparent !important;
+}
+
 .calculator-results h3 {
     color: var(--accent-color);
     text-align: center;
+}
+
+.chemical-summary {
+    display: grid;
+    gap: 10px;
+}
+
+.chemical-summary strong {
+    color: var(--accent-color);
+}
+
+.chemical-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.chemical-list li {
+    margin-bottom: 8px;
 }
 
 /* Binary Encoder/Decoder Styling */
