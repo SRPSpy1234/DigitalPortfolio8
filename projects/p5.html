@@ -41,8 +41,7 @@
                     </div>
                     <div style="display: inline-block; margin: 10px;">
                         <h4>Sad</h4>
-                        <img src="../images/p5_sad.png" alt="Project 5 - Sad
-                        " id="project-image" style="max-width: 400px;">
+                        <img src="../images/p5_sad.png" alt="Project 5 - Sad" id="project-image" style="max-width: 400px;">
                     </div>
                     <div style="display: inline-block; margin: 10px;">
                         <h4>Content</h4>
@@ -52,7 +51,7 @@
                 
                 <!-- Code dropdown -->
                 <div class="code-dropdown">
-                    <button class="code-toggle" onclick="toggleCode()">View Code</button>
+                    <button class="code-toggle" onclick="toggleCode('codeContent', this)">View Code</button>
                     <div class="code-content" id="codeContent" style="display: none;">
                         <pre><code>
                         #include &lt;Servo.h&gt;
@@ -132,7 +131,68 @@ void loop() {
                     <button class="code-toggle" onclick="toggleCode('codeContent2', this)">View Code</button>
                     <div class="code-content" id="codeContent2" style="display: none;">
                         <pre><code>
-                        
+//Adds the servo library to the code
+#include &lt;Servo.h&gt;
+
+//Declares the servo so the code can use it
+Servo theServo;
+
+
+//								Variables
+
+//Variable for motion sensor pin
+const int msPin = 12;
+//msPin value
+int msValue;
+//Variable to store servo angles
+const int up = 90;
+const int down = 0;
+//Store the red and green LED pins
+const int redLED = 8;
+const int greenLED = 7;
+
+
+
+void setup() {
+  //Assign pin 9 to the servo input
+  theServo.attach(9);
+  //PinMode for red and green LEDs
+  pinMode(8, OUTPUT);
+  pinMode(7, OUTPUT);
+  //PinMode for motion sensor to send signals
+  pinMode(12, INPUT);
+  
+}
+
+void loop() {
+  //PIR sensor value to read the sensor
+  msValue = digitalRead(msPin);
+  
+  //If statement to check if sensor value is zero
+  if(msValue == 0) {
+    //Writes red LED to high
+    digitalWrite(redLED, HIGH);
+    //Writes green LED to low
+    digitalWrite(greenLED, LOW);
+    //Close the servo using the servo command
+    theServo.write(down);
+  } else if(msValue == 1) {
+    //Writes red LED to low
+    digitalWrite(redLED, LOW);
+    //Writes green LED to high
+    digitalWrite(greenLED, HIGH);
+    //Open the servo using the servo command
+    theServo.write(up);
+    //5 second delay to keep open
+    delay(5000);
+  }
+  
+   
+  //2 second delay
+  delay(2000);
+
+
+}
                         </code></pre>
                     </div>
                 </div>
@@ -141,11 +201,11 @@ void loop() {
                 <h3>Project Description</h3>
                 <h4>Code Generation</h4>
                 <p class="project-description">
-
+                    The code generation of this project was pretty simple aswell. We used the servo library again to control the servo angle and we used an IR motion sensor to control the servo's angle and the LEDs. We used digitalRead to read the value of the motion sensor, either a 1 or a 0. We then used if statments to check weather the values were 1 or 0 and then used digitalWrite to turn the LEDs on or off according to which one was true and the we used the servo command to move the servo to the up or down postitions. The was easy to write and it worked nicely. The code did have one or two new aspects to it, like the motion sensor but overall that didn't chage much about the code.
                 </p>
                 <h4>Building</h4>
                 <p class="project-description">
-
+                    The build portion of this project was fun albeit a little longer than some of the others. To start it off I had to take measurments of the all my components and design a casing for them. I designed that in OnShape and then 3D printed it. First I measured and then I made a rough draft that fit the dimentions that the build required. After that I went back in and made it look nicer and cleaner. I then made the lid for it so it won't have exposed wires and boards. After the lid I made the arm/gate for the servo. The arm is about 8" long and is designed to look like a barrier gate. The build was a lot of fun and I really enjoyed it. The design turned out how I wanted and the 3D printing went super smothly. The only thing that took a little extra time was the connectors because I had to add more so it was sturdy.
                 </p>
                 <h4>Errors and Real Life Application</h4>
                 <p class="project-description">
