@@ -1156,6 +1156,16 @@ h4 {
     border-color: var(--accent-color);
 }
 
+/* Project Section Box Styling */
+.project-section {
+    margin: 30px 0.5in;
+    padding: 20px 30px;
+    border-radius: 10px;
+    border-style: outset;
+    border-width: var(--border-width);
+    border-color: var(--accent-color);
+}
+
 /* Code Dropdown Styling */
 .code-dropdown {
     margin: 20px 0;
